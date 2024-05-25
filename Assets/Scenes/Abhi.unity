@@ -487,8 +487,8 @@ Canvas:
   m_GameObject: {fileID: 91390963}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -517,6 +517,7 @@ RectTransform:
   - {fileID: 50157359}
   - {fileID: 1205411887}
   - {fileID: 106338728}
+  - {fileID: 2011967326}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -609,7 +610,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.45
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -799,7 +800,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0ad7e58badf0f97408f2a62a219a10c8, type: 2}
   newsHeadlines:
   - {fileID: 11400000, guid: 49bd116fe58f68b469b79d1601ce4b09, type: 2}
-  updateTime: 0.5
+  updateTime: 1
   timeBetweenHeadlines: 15
   stockWeightDivisor: 2.5
   minStockWeight: 0.01
@@ -1188,16 +1189,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011967325}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -9720}
+  m_LocalScale: {x: 108, y: 108, z: 108}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 91390967}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 550.5, y: 271}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 16, y: 9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2011967327
 MonoBehaviour:
@@ -1214,53 +1215,130 @@ MonoBehaviour:
   updatePeriod: 5
   graphSize: {x: 800, y: 400}
   graphScale: {x: 100, y: 100}
-  backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+  backgroundColor:
+    r: 0
+    g: 0
+    b: 0
+    a: 1
   outlineWidth: 5
-  outlineColor: {r: 0, g: 0.8, b: 1, a: 1}
+  outlineColor:
+    r: 0
+    g: 0.8
+    b: 1
+    a: 1
   lineWidth: 8
-  lineColor: {r: 1, g: 0.35, b: 0, a: 1}
-  PointSprite: {fileID: 21300000, guid: a0e35f6b808bb7447826cc6c69ffe448, type: 3}
+  lineColor:
+    r: 1
+    g: 0.35
+    b: 0
+    a: 1
+  PointSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   pointRadius: 5
-  pointColor: {r: 1, g: 0.35, b: 0, a: 1}
+  pointColor:
+    r: 1
+    g: 0.35
+    b: 0
+    a: 1
   pointHoverRadius: 15
   PointHoverSpeed: 5
-  pointHoverColor: {r: 1, g: 0.6, b: 0, a: 1}
+  pointHoverColor:
+    r: 1
+    g: 0.6
+    b: 0
+    a: 1
   pointLockedRadius: 17
   PointLockedSpeed: 5
-  pointLockedColor: {r: 1, g: 0.8, b: 0, a: 1}
+  pointLockedColor:
+    r: 1
+    g: 0.8
+    b: 0
+    a: 1
   unfixedPointOutlineWidth: 10
-  unfixedPointOutlineColor: {r: 0, g: 0.8, b: 1, a: 1}
+  unfixedPointOutlineColor:
+    r: 0
+    g: 0.8
+    b: 1
+    a: 1
   unfixedPointOutlineHoverWidth: 15
   UnfixedPointOutlineHoverSpeed: 5
-  unfixedPointOutlineHoverColor: {r: 0, g: 0.5, b: 1, a: 1}
+  unfixedPointOutlineHoverColor:
+    r: 0
+    g: 0.5
+    b: 1
+    a: 1
   fixedPointOutlineWidth: 17
   FixedPointOutlineSpeed: 5
-  fixedPointOutlineColor: {r: 0, g: 0.8, b: 1, a: 1}
+  fixedPointOutlineColor:
+    r: 0
+    g: 0.8
+    b: 1
+    a: 1
   GridTextFont: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
   gridSpacing: {x: 1, y: 1}
   xAxisWidth: 3
-  xAxisColor: {r: 0, g: 0.8, b: 1, a: 1}
-  xAxisTextColor: {r: 0, g: 0.8, b: 1, a: 1}
+  xAxisColor:
+    r: 0
+    g: 0.8
+    b: 1
+    a: 1
+  xAxisTextColor:
+    r: 0
+    g: 0.8
+    b: 1
+    a: 1
   xAxisTextSize: 10
   xAxisTextOffset: 10
   yAxisWidth: 3
-  yAxisColor: {r: 0, g: 0.8, b: 1, a: 1}
-  yAxisTextColor: {r: 0, g: 0.8, b: 1, a: 1}
+  yAxisColor:
+    r: 0
+    g: 0.8
+    b: 1
+    a: 1
+  yAxisTextColor:
+    r: 0
+    g: 0.8
+    b: 1
+    a: 1
   yAxisTextSize: 10
   yAxisTextOffset: 10
   xGridWidth: 2
-  xGridColor: {r: 0, g: 0.8, b: 1, a: 0.6}
+  xGridColor:
+    r: 0
+    g: 0.8
+    b: 1
+    a: 0.6
   yGridWidth: 2
-  yGridColor: {r: 0, g: 0.8, b: 1, a: 0.6}
-  zoomSelectionColor: {r: 0, g: 0.8, b: 1, a: 0.2}
+  yGridColor:
+    r: 0
+    g: 0.8
+    b: 1
+    a: 0.6
+  zoomSelectionColor:
+    r: 0
+    g: 0.8
+    b: 1
+    a: 0.2
   zoomSelectionOutlineWidth: 5
-  zoomSelectionOutlineColor: {r: 0, g: 0.8, b: 1, a: 0.6}
-  pointSelectionColor: {r: 1, g: 0.35, b: 0, a: 0.2}
+  zoomSelectionOutlineColor:
+    r: 0
+    g: 0.8
+    b: 1
+    a: 0.6
+  pointSelectionColor:
+    r: 1
+    g: 0.35
+    b: 0
+    a: 0.2
   pointSelectionOutlineWidth: 5
-  pointSelectionOutlineColor: {r: 1, g: 0.35, b: 0, a: 0.4}
+  pointSelectionOutlineColor:
+    r: 1
+    g: 0.35
+    b: 0
+    a: 0.4
   ZoomSpeed: 5
   SmoothZoomSpeed: 20
   SmoothMoveSpeed: 20
+  GH: {fileID: 0}
 --- !u!114 &2011967328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1274,16 +1352,83 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateGraph: 0
+  GS: {fileID: 0}
   canvas: {fileID: 91390966}
+  graph: {fileID: 0}
+  graphContent: {fileID: 0}
+  contentScale: {x: 0, y: 0}
+  values: []
+  sortedIndices: 
+  xAxisRange: {x: -1, y: -1}
+  prevXAxisRange: {x: -1, y: -1}
   activePointIndex: -1
+  activePointValue: {x: 0, y: 0}
+  pointIsActive: 0
+  points: []
+  pointImages: []
+  pointRects: []
+  pointOutlines: []
+  pointOutlineRects: []
+  pointOutlineImages: []
+  lines: []
+  lineRects: []
+  lineImages: []
+  xGridRects: []
+  xGridImages: []
+  xAxisTexts: []
+  xAxisTextRects: []
+  yGridRects: []
+  yGridImages: []
+  yAxisTexts: []
+  yAxisTextRects: []
+  zoomSelectionRectTransform: {fileID: 0}
+  zoomSelectionImage: {fileID: 0}
+  zoomSelectionOutlines: []
+  zoomSelectionOutlineImages: []
+  pointSelectionRectTransform: {fileID: 0}
+  pointSelectionImage: {fileID: 0}
+  pointSelectionOutlines: []
+  pointSelectionOutlineImages: []
+  maskObj: {fileID: 0}
+  backgroundImage: {fileID: 0}
+  backgroundRect: {fileID: 0}
+  pointParent: {fileID: 0}
+  lineParent: {fileID: 0}
+  gridParent: {fileID: 0}
+  outlineParent: {fileID: 0}
+  outlines: []
+  outlineImages: []
+  lockedHoveredPoints: 
+  lockedPoints: 
+  fixedHoveredPoints: 
   fixedPointIndex: -1
+  contentOffset: {x: 0, y: 0}
+  bottomLeft: {x: 0, y: 0}
+  topRight: {x: 0, y: 0}
+  center: {x: 0, y: 0}
   mouseActionType: 0
   rectangleType: 0
   rectangleSelectionType: 0
   rectangleSelectionPhase: 0
   pointSelectionType: 0
+  initialLockedPoints: 
+  recentlyLockedPoints: 
+  mouseInsideBounds: 0
+  mousePos: {x: 0, y: 0}
+  previousMousePos: {x: 0, y: 0}
+  initialMousePos: {x: 0, y: 0}
+  initialMouseInsideBounds: 0
+  zoomPoint: {x: 0, y: 0}
+  absoluteZoomPoint: {x: 0, y: 0}
   targetZoom: {x: 1, y: 1}
+  zoom: {x: 1, y: 1}
+  moveOffset: {x: 0, y: 0}
   targetMoveOffset: {x: 0, y: 0}
+  initialMoveOffset: {x: 0, y: 0}
+  timeToUpdateMouse: 0
+  timeToUpdateTouch: 0
+  timeToUpdateScroll: 0
+  error: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1293,4 +1438,3 @@ SceneRoots:
   - {fileID: 91390967}
   - {fileID: 794528755}
   - {fileID: 1277692809}
-  - {fileID: 2011967326}
