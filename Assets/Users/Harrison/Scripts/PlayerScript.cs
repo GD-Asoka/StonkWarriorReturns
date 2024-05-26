@@ -73,6 +73,7 @@ public class PlayerScript : TraderScript
             return;
         }
         INSTANCE = this;
+        isPlayer = true;
     }
 
     protected override void Start()

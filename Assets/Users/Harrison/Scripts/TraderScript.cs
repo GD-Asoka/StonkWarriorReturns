@@ -11,6 +11,7 @@ public class TraderScript : MonoBehaviour
     public float buyoutValue { get; protected set; } = 0f;
     protected float _buyoutMod = 1;
     public bool boughtOut { get; protected set; } = false;
+    public bool isPlayer { get; protected set; } = false;
 
     protected virtual void Start()
     {
