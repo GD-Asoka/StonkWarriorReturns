@@ -79,10 +79,12 @@ public class PlayerScript : TraderScript
     {
         base.Start();
         _stockSelected = 0;
+        _buyoutMod = GameManager.INSTANCE.difficultySettings.playerBuyoutMod;
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (_lastState != state)
         {
             _buySellMod = 1;
@@ -101,5 +103,11 @@ public class PlayerScript : TraderScript
         }
 
         _lastState = state;
+    }
+
+    public override void GetBoughtOut()
+    {
+        base.GetBoughtOut();
+        GameManager.INSTANCE.PlayerLost();
     }
 }
