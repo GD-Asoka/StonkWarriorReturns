@@ -17,6 +17,9 @@ public class PlayerScript : TraderScript
         BUYING,
         SELLING
     }
+    /*
+     * List<stock1>
+     */
 
     public MarketState state { get; private set; } = MarketState.NONE;
     private MarketState _lastState = MarketState.NONE;
