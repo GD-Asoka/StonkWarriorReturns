@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class PlayerScript : TraderScript
 {
     public static PlayerScript INSTANCE;
+    public static event UnityAction<StocksScriptableObject> SwappedStock;
     [SerializeField] [Range(1f, 2f)] private float _holdMultiplyer = 1.25f;
     private float _buySellMod = 1;
     public int _stockSelected { get; private set; } = 0;
-    
+
+    StocksScriptableObject stockToWatch;
 
     public enum MarketState
     {
@@ -63,6 +66,7 @@ public class PlayerScript : TraderScript
         {
             _stockSelected = 0;
         }
+        SwappedStock?.Invoke(_availableStocks[_stockSelected]);
     }
 
     private void Awake()
