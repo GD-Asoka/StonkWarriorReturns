@@ -95,6 +95,21 @@ public class TraderScript : MonoBehaviour
         }
     }
 
+    protected void SellAllStocks()
+    {
+        if (_stocksOwned.Count == 0)
+        {
+            return;
+        }
+        foreach (StocksScriptableObject stock in _stocksOwned.Keys)
+        {
+            if (_stocksOwned[stock] > 0)
+            {
+                SellStock(stock, _stocksOwned[stock]);
+            }
+        }
+    }
+
     public bool AttemptBuyout(TraderScript target)
     {
         if (money < target.buyoutValue)

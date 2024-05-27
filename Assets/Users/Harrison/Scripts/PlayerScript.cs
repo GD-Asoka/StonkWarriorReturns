@@ -132,6 +132,11 @@ public class PlayerScript : TraderScript
         SellStock(stock, amount);
     }
 
+    public void PlayerSellAllStock()
+    {
+        SellAllStocks();
+    }
+
     public override void GetBoughtOut()
     {
         base.GetBoughtOut();
