@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class PlayerScript : TraderScript
 {
     public static PlayerScript INSTANCE;
+    public static event UnityAction<StocksScriptableObject> SwappedStock;
     [SerializeField] [Range(1f, 2f)] private float _holdMultiplyer = 1.25f;
     private float _buySellMod = 1;
     public int _stockSelected { get; private set; } = 0;
-    
+
+    StocksScriptableObject stockToWatch;
 
     public enum MarketState
     {
@@ -66,6 +69,7 @@ public class PlayerScript : TraderScript
         {
             _stockSelected = 0;
         }
+        SwappedStock?.Invoke(_availableStocks[_stockSelected]);
     }
 
     private void Awake()
@@ -76,16 +80,19 @@ public class PlayerScript : TraderScript
             return;
         }
         INSTANCE = this;
+        isPlayer = true;
     }
 
     protected override void Start()
     {
         base.Start();
         _stockSelected = 0;
+        _buyoutMod = GameManager.INSTANCE.difficultySettings.playerBuyoutMod;
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (_lastState != state)
         {
             _buySellMod = 1;
@@ -104,5 +111,11 @@ public class PlayerScript : TraderScript
         }
 
         _lastState = state;
+    }
+
+    public override void GetBoughtOut()
+    {
+        base.GetBoughtOut();
+        GameManager.INSTANCE.PlayerLost();
     }
 }
