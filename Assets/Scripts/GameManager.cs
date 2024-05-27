@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("GameplayScene");
+    }
+
+    public void Initialize()
+    {
         enemyTraders = FindEnemyTraders();
     }
 
@@ -49,9 +53,10 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    
     public void PlayerLost()
     {
 
     }
+
 }

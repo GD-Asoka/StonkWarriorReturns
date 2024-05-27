@@ -16,8 +16,8 @@ MonoBehaviour:
   flavourText: Rabbit season has started early. Good news for hunters and gun owners
     alike. In other news, a talking duck has been discovered in Northern Vancouver
     by local hunter Elmer Fudd.
-  minEffectTime: 0
-  maxEffectTime: 0
+  minEffectTime: 2.5
+  maxEffectTime: 4
   stockEffects:
     _serializedList:
     - Key: {fileID: 11400000, guid: 483d87501b6498646a172aba670a3e6e, type: 2}
