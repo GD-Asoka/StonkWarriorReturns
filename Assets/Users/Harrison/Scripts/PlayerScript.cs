@@ -119,6 +119,7 @@ public class PlayerScript : TraderScript
         }
 
         _stockSelected = _availableStocks.IndexOf(stock);
+        SwappedStock?.Invoke(_availableStocks[_stockSelected]);
     }
 
     public void PlayerBuyStock(StocksScriptableObject stock, int amount = 1)
