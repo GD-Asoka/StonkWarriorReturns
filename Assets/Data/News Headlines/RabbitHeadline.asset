@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4deffbb10d2d7e844887e45f16613cd5, type: 3}
+  m_Name: RabbitHeadline
+  m_EditorClassIdentifier: 
+  newsHeadline: Rabbit Season begins
+  flavourText: Rabbit season has started early. Good news for hunters and gun owners
+    alike. In other news, a talking duck has been discovered in Northern Vancouver
+    by local hunter Elmer Fudd.
+  minEffectTime: 0
+  maxEffectTime: 0
+  stockEffects:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: 483d87501b6498646a172aba670a3e6e, type: 2}
+      Value: {x: 25, y: 40}
+    - Key: {fileID: 11400000, guid: b01b92f3bbd22d147a056761d82ea172, type: 2}
+      Value: {x: -2, y: -10}
+    - Key: {fileID: 11400000, guid: dfe49198653cdf0478409f9ae8d9b053, type: 2}
+      Value: {x: 2.5, y: 4}

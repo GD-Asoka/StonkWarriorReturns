@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4deffbb10d2d7e844887e45f16613cd5, type: 3}
+  m_Name: HumanHeadline
+  m_EditorClassIdentifier: 
+  newsHeadline: Human meat discovered in BurgerQueen Patties
+  flavourText: Local food inspector shocked to find that BurgerQueen patties were
+    composed of 20% human meat. The CEO, H.Lector, says that he will take extra precautions
+    going forward, and that his customers are his number 1 priority.
+  minEffectTime: 3
+  maxEffectTime: 7.5
+  stockEffects:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: 5b5cbef6f64110345b0fdde96abe0075, type: 2}
+      Value: {x: -20, y: -25}
+    - Key: {fileID: 11400000, guid: d9ff95fd6982d844f8d95c11487e84da, type: 2}
+      Value: {x: 2.5, y: 5}
+    - Key: {fileID: 11400000, guid: e04d3f701ac535943ad1a2b50ea8fde2, type: 2}
+      Value: {x: 10, y: 15}
+    - Key: {fileID: 11400000, guid: c7d3b50cb5fc7c3488641acbbd6ece78, type: 2}
+      Value: {x: -5, y: -10}

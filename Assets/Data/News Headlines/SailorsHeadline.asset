@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4deffbb10d2d7e844887e45f16613cd5, type: 3}
+  m_Name: SailorsHeadline
+  m_EditorClassIdentifier: 
+  newsHeadline: Sailors buying all spinach off shelves
+  flavourText: 'Sailors all over Vancouver have suddenly started buying spinach in
+    bulk after a reddot meme went viral. The meme depicts spinach eating Popeye as
+    the chad wojack and non spinach eating wimpy as the soy wojack. '
+  minEffectTime: 2.5
+  maxEffectTime: 5
+  stockEffects:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: 2bb315f873ddd0543bed515044fa4bef, type: 2}
+      Value: {x: 15, y: 35}
+    - Key: {fileID: 11400000, guid: e04d3f701ac535943ad1a2b50ea8fde2, type: 2}
+      Value: {x: 25, y: 65}
+    - Key: {fileID: 11400000, guid: dfe49198653cdf0478409f9ae8d9b053, type: 2}
+      Value: {x: 5, y: 10}
+    - Key: {fileID: 11400000, guid: 5b5cbef6f64110345b0fdde96abe0075, type: 2}
+      Value: {x: -2.5, y: -5}
+    - Key: {fileID: 11400000, guid: d9ff95fd6982d844f8d95c11487e84da, type: 2}
+      Value: {x: -2.5, y: -7.5}

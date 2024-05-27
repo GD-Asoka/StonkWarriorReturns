@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4deffbb10d2d7e844887e45f16613cd5, type: 3}
+  m_Name: SurveillanceHeadline
+  m_EditorClassIdentifier: 
+  newsHeadline: New Breakthrough in surveillance technology
+  flavourText: Multi-Billion dollar security company BigBrotherSecurity has filed
+    for a new patent they claim is revolutionary. The new technology can apparently
+    predict when crime will happen. Tech magazine - The Minority Report - backs these
+    claims.
+  minEffectTime: 2.5
+  maxEffectTime: 7.5
+  stockEffects:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: 5ffc1e39e90829f4683b5b5fa6de85ac, type: 2}
+      Value: {x: 25, y: 75}
+    - Key: {fileID: 11400000, guid: 6dd05754e4dc875419463320373d98df, type: 2}
+      Value: {x: 2.5, y: 3.75}
+    - Key: {fileID: 11400000, guid: 221799b4a09fd914b939aee41b13b774, type: 2}
+      Value: {x: 10, y: 15}
