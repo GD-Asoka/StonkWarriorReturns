@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7470768910603429486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5993248293573210996}
+  - component: {fileID: 5658336557213877110}
+  m_Layer: 0
+  m_Name: BasicAI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5993248293573210996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470768910603429486}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 928.2663, y: 572.5458, z: -9.367333}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5658336557213877110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470768910603429486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5418cc5368f5641b8c854fd39adf8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startingMoney: 1000
+  _stocksToWatch:
+  - {fileID: 11400000, guid: df8dd17d792e21c4c8ec0ae49a738e76, type: 2}
+  - {fileID: 11400000, guid: 528dcf8847716094ba78a2bafdfb8d92, type: 2}
+  - {fileID: 11400000, guid: 5ffc1e39e90829f4683b5b5fa6de85ac, type: 2}
+  - {fileID: 11400000, guid: b01b92f3bbd22d147a056761d82ea172, type: 2}
+  - {fileID: 11400000, guid: 5b5cbef6f64110345b0fdde96abe0075, type: 2}
+  - {fileID: 11400000, guid: d9ff95fd6982d844f8d95c11487e84da, type: 2}
+  - {fileID: 11400000, guid: 6dd05754e4dc875419463320373d98df, type: 2}
+  - {fileID: 11400000, guid: 31a0c9ec3830e3e47baf4da578984f1a, type: 2}
+  - {fileID: 11400000, guid: 483d87501b6498646a172aba670a3e6e, type: 2}
+  - {fileID: 11400000, guid: 2bb315f873ddd0543bed515044fa4bef, type: 2}
+  - {fileID: 11400000, guid: e04d3f701ac535943ad1a2b50ea8fde2, type: 2}
+  - {fileID: 11400000, guid: dfe49198653cdf0478409f9ae8d9b053, type: 2}
+  - {fileID: 11400000, guid: 0850a4b577967474fab5872a32c9f81f, type: 2}
+  - {fileID: 11400000, guid: c7d3b50cb5fc7c3488641acbbd6ece78, type: 2}
+  - {fileID: 11400000, guid: 221799b4a09fd914b939aee41b13b774, type: 2}
+  _buyPercent: 50
+  _numberStocksToBuy: 10
+  _sellPercentGain: 15

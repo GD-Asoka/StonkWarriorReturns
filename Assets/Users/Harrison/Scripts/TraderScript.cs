@@ -13,6 +13,11 @@ public class TraderScript : MonoBehaviour
     public bool boughtOut { get; protected set; } = false;
     public bool isPlayer { get; protected set; } = false;
 
+    protected virtual void Awake()
+    {
+
+    }
+
     protected virtual void Start()
     {
         _availableStocks = new List<StocksScriptableObject>(StockPriceManager.INSTANCE.stockData.Keys);

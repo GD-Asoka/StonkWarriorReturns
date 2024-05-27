@@ -380,7 +380,7 @@ public class GraphHandler : MonoBehaviour
 
         print(value);
         //targetZoom = value + value * GS.ZoomSpeed / 100f;
-        //targetMoveOffset = new Vector2(xVal,yVal);
+        targetMoveOffset = new Vector2(xVal,yVal);
         //ChangeZoomPoint(value);
 
         EventTrigger trigger = point.AddComponent<EventTrigger>();

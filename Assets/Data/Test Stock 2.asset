@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Test Stock 2
   m_EditorClassIdentifier: 
   stockName: Test Stock 2
-  startingValueRange: {x: 100, y: 100}
+  acronym: 
+  startingValueRange: {x: 1, y: 1}
   minMaxDefaultTrend: {x: -7.5, y: 7.5}

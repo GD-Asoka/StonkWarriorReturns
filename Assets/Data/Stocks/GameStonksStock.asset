@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae86565a93ecb147a3e3ecb8a02532d, type: 3}
   m_Name: GameStonksStock
   m_EditorClassIdentifier: 
-  stockName: Stock Name
-  acronym: 
-  startingValueRange: {x: 1, y: 1}
-  minMaxDefaultTrend: {x: -1, y: 1}
+  stockName: Game Stonks
+  acronym: GMST
+  startingValueRange: {x: 55, y: 100}
+  minMaxDefaultTrend: {x: -1.3, y: 1.25}

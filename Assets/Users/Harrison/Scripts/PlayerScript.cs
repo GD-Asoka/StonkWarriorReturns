@@ -72,8 +72,9 @@ public class PlayerScript : TraderScript
         SwappedStock?.Invoke(_availableStocks[_stockSelected]);
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if (INSTANCE != null)
         {
             Destroy(gameObject);
