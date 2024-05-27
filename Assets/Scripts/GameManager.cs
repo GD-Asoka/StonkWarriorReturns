@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager INSTANCE;
     public DifficultySettingsScriptableObject difficultySettings;
     private List<TraderScript> enemyTraders = new List<TraderScript>();
+
     private void Awake()
     {
         if (INSTANCE != null)

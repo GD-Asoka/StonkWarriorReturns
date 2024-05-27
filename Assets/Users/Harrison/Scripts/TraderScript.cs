@@ -44,6 +44,14 @@ public class TraderScript : MonoBehaviour
 
     protected virtual void BuyStock(StocksScriptableObject stock, int numToBuy)
     {
+        if (numToBuy > GetMaxStocksBuy(stock))
+        {
+            numToBuy = GetMaxStocksBuy(stock);
+        }
+        if (numToBuy == 0)
+        {
+            return;
+        }
         if (StockPriceManager.INSTANCE.BuyStock(stock, numToBuy, money))
         {
             if (!_stocksOwned.ContainsKey(stock))
@@ -53,6 +61,16 @@ public class TraderScript : MonoBehaviour
             _stocksOwned[stock] += numToBuy;
             money -= (numToBuy * StockPriceManager.INSTANCE.stockData[stock].currentPrice);
         }
+    }
+
+    protected int GetMaxStocksBuy(StocksScriptableObject stock)
+    {
+        if (!StockPriceManager.INSTANCE.stockData.ContainsKey(stock))
+        {
+            Debug.LogWarning($"{stock.stockName} is not in stock data.");
+            return 0;
+        }
+        return (int)(money / StockPriceManager.INSTANCE.stockData[stock].currentPrice);
     }
 
     protected virtual void SellStock(StocksScriptableObject stock, int numToSell)

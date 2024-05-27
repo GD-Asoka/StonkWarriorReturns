@@ -110,6 +110,27 @@ public class PlayerScript : TraderScript
         _lastState = state;
     }
 
+    public void SwapStock(StocksScriptableObject stock)
+    {
+        if (!_availableStocks.Contains(stock))
+        {
+            Debug.LogWarning($"Stock {stock.name} isn't an available stock.");
+            return;
+        }
+
+        _stockSelected = _availableStocks.IndexOf(stock);
+    }
+
+    public void PlayerBuyStock(StocksScriptableObject stock, int amount = 1)
+    {
+        BuyStock(stock, amount);
+    }
+
+    public void PlayerSellStock(StocksScriptableObject stock, int amount = 1)
+    {
+        SellStock(stock, amount);
+    }
+
     public override void GetBoughtOut()
     {
         base.GetBoughtOut();
