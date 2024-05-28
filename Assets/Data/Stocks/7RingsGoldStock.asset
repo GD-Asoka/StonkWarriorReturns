@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: 7RingsGoldStock
   m_EditorClassIdentifier: 
   stockName: Stock Name
-  startingValueRange: {x: 1, y: 1}
+  acronym: 
+  startingValueRange: {x: 10, y: 10}
   minMaxDefaultTrend: {x: -1, y: 1}
+  color: {r: 0, g: 0.9811321, b: 0.011441968, a: 1}

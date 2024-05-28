@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: BetathesdaStock
   m_EditorClassIdentifier: 
   stockName: Stock Name
-  startingValueRange: {x: 1, y: 1}
+  acronym: 
+  startingValueRange: {x: 10, y: 10}
   minMaxDefaultTrend: {x: -1, y: 1}
+  color: {r: 1, g: 1, b: 1, a: 1}

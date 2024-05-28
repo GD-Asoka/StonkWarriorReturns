@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stockName: Healthy Hearts
   acronym: HLHT
-  startingValueRange: {x: 250, y: 300}
+  startingValueRange: {x: 10, y: 10}
   minMaxDefaultTrend: {x: -0.25, y: 0.25}
+  color: {r: 0.601925, g: 1, b: 0, a: 1}
