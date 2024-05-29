@@ -8,6 +8,7 @@ public class PlayerScript : TraderScript
 {
     public static PlayerScript INSTANCE;
     public static event UnityAction<StocksScriptableObject> SwappedStock;
+    public static event UnityAction<StocksScriptableObject, int> PlayerStockAmountChange;
     [SerializeField] [Range(1f, 2f)] private float _holdMultiplyer = 1.25f;
     private float _buySellMod = 1;
     public int _stockSelected { get; private set; } = 0;
@@ -145,5 +146,17 @@ public class PlayerScript : TraderScript
     {
         base.GetBoughtOut();
         GameManager.INSTANCE.PlayerLost();
+    }
+
+    protected override void BuyStock(StocksScriptableObject stock, int numToBuy)
+    {
+        base.BuyStock(stock, numToBuy);
+        PlayerStockAmountChange?.Invoke(stock, _stocksOwned[stock]);
+    }
+
+    protected override void SellStock(StocksScriptableObject stock, int numToSell)
+    {
+        base.SellStock(stock, numToSell);
+        PlayerStockAmountChange?.Invoke(stock, _stocksOwned[stock]);
     }
 }
