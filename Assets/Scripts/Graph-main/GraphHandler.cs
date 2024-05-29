@@ -248,8 +248,8 @@ public class GraphHandler : MonoBehaviour
         botPos = topLimit.TransformPoint(botLimit.localPosition);
         centerPos = topLimit.TransformPoint(centerLimit.localPosition);
         GS.ChangeColor(stockToWatch.color);
-
-        
+        print(topRight.y);
+        print(bottomLeft.y);        
     }
 
     public float panSpeed = 5, zoomSpeed = 1;
@@ -292,7 +292,7 @@ public class GraphHandler : MonoBehaviour
         if (fixedHoveredPoints.Count > 0)
             UpdatePointOutlines();
         
-        //AdjustZoom();   
+        AdjustZoom();   
         zoom = Vector2.Lerp(zoom, targetZoom, GS.SmoothZoomSpeed * Time.deltaTime);
         targetMoveOffset.x += panSpeed * Time.deltaTime;
         moveOffset = Vector2.Lerp(moveOffset, targetMoveOffset, GS.SmoothMoveSpeed * Time.deltaTime);
@@ -310,6 +310,7 @@ public class GraphHandler : MonoBehaviour
         foreach (RectTransform rt in pointsList)
         {
             Vector2 p1 = rt.TransformPoint(rt.localPosition);
+            //Vector2 p1 = rt.position;
             averageY += p1.y;
             //if (p1.y > topPos.y || p1.y < botPos.y)
             //{
@@ -323,15 +324,15 @@ public class GraphHandler : MonoBehaviour
         averageY /= pointsList.Count;
 
         //Determine proximity to limits and adjust zoom accordingly
-        if (Mathf.Abs(averageY - topRight.y) < zoomThreshold)
+        if (Mathf.Abs(averageY - topPos.y) < zoomThreshold)
         {
             targetZoom = new Vector2(Mathf.Clamp(targetZoom.x - 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y - 0.01f, 0.1f, 0.9f));
         }
-        else if (Mathf.Abs(averageY - bottomLeft.y) < zoomThreshold)
+        else if (Mathf.Abs(averageY - botPos.y) < zoomThreshold)
         {
             targetZoom = new Vector2(Mathf.Clamp(targetZoom.x - 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y - 0.01f, 0.1f, 0.9f));
         }
-        else if (Mathf.Abs(averageY - (topRight.y + bottomLeft.y)/2) < zoomThreshold)
+        else if (Mathf.Abs(averageY - centerPos.y) < zoomThreshold)
         {
             targetZoom = new Vector2(Mathf.Clamp(targetZoom.x + 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y + 0.01f, 0.1f, 0.9f));
         }
