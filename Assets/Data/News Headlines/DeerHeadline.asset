@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4deffbb10d2d7e844887e45f16613cd5, type: 3}
+  m_Name: DeerHeadline
+  m_EditorClassIdentifier: 
+  newsHeadline: Deer population explodes
+  flavourText: The deer population in north Vancouver has suddenly exploded this
+    spring. Authorities are shocked as it is not yet mating season. In other news,
+    heartbroken wife flushes down husbands supply of 600 Viagra pills after finding
+    out he was cheating on her.
+  minEffectTime: 2
+  maxEffectTime: 7.5
+  stockEffects:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: 483d87501b6498646a172aba670a3e6e, type: 2}
+      Value: {x: 10, y: 15}
+    - Key: {fileID: 11400000, guid: 5b5cbef6f64110345b0fdde96abe0075, type: 2}
+      Value: {x: 2.5, y: 5}
+    - Key: {fileID: 11400000, guid: b01b92f3bbd22d147a056761d82ea172, type: 2}
+      Value: {x: -10, y: -15}

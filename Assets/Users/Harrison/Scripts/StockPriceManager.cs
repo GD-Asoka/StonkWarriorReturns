@@ -41,6 +41,8 @@ public class StockPriceManager : MonoBehaviour
         }
         INSTANCE = this;
 
+        GameManager.INSTANCE.Initialize();
+
         for (int s = 0; s < stocks.Count; s++)
         {
             if (!stockData.ContainsKey(stocks[s]))
@@ -78,7 +80,7 @@ public class StockPriceManager : MonoBehaviour
                 stockData[stock] = ChangeStockValue(stock, stockPrice, trend, trendMod);
                 //Debug.Log($"{stock.stockName}: {stockData[stock].currentPrice}: {stockData[stock].currentTrend}");
             }
-            UpdatePrices.Invoke(stockData);
+            UpdatePrices?.Invoke(stockData);
             if (headlineTime <= 0)
             {
                 headlineTime = timeBetweenHeadlines;
@@ -152,7 +154,7 @@ public class StockPriceManager : MonoBehaviour
         {
             return;
         }
-        //NewsCall.Invoke(newsHeadline);
+        NewsCall?.Invoke(newsHeadline);
         if (newsHeadline.stockEffects.Keys.Count != 0)
         {
             StartCoroutine(ApplyNewsEffect(newsHeadline));

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4deffbb10d2d7e844887e45f16613cd5, type: 3}
+  m_Name: StarFailedHeadline
+  m_EditorClassIdentifier: 
+  newsHeadline: Star Failed Released
+  flavourText: Betathesda has released their long awaited new game - star failed.
+    Experts say it will definetely hold up to its hype and deliver on its expectations.
+  minEffectTime: 2.5
+  maxEffectTime: 3
+  stockEffects:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: 528dcf8847716094ba78a2bafdfb8d92, type: 2}
+      Value: {x: -20, y: -15}
+    - Key: {fileID: 11400000, guid: 31a0c9ec3830e3e47baf4da578984f1a, type: 2}
+      Value: {x: 10, y: 15}
