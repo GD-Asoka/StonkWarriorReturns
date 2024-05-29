@@ -151,12 +151,22 @@ public class PlayerScript : TraderScript
     protected override void BuyStock(StocksScriptableObject stock, int numToBuy)
     {
         base.BuyStock(stock, numToBuy);
+        if (!_stocksOwned.ContainsKey(stock))
+        {
+            PlayerStockAmountChange?.Invoke(stock, 0);
+            return;
+        }
         PlayerStockAmountChange?.Invoke(stock, _stocksOwned[stock]);
     }
 
     protected override void SellStock(StocksScriptableObject stock, int numToSell)
     {
         base.SellStock(stock, numToSell);
+        if (!_stocksOwned.ContainsKey(stock))
+        {
+            PlayerStockAmountChange?.Invoke(stock, 0);
+            return;
+        }
         PlayerStockAmountChange?.Invoke(stock, _stocksOwned[stock]);
     }
 }

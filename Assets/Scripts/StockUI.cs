@@ -32,4 +32,26 @@ public class StockUI : MonoBehaviour
         }
         _ownedStockAmountText.text = $"Owned: {newValue}";
     }
+
+    public void Buy()
+    {
+        if (_stockToWatch != null)
+        {
+            if (StockPriceManager.INSTANCE.stockData.ContainsKey(_stockToWatch))
+            {
+                PlayerScript.INSTANCE.PlayerBuyStock(_stockToWatch);
+            }
+        }
+    }
+
+    public void Sell()
+    {
+        if (_stockToWatch != null)
+        {
+            if (StockPriceManager.INSTANCE.stockData.ContainsKey(_stockToWatch))
+            {
+                PlayerScript.INSTANCE.PlayerSellStock(_stockToWatch);
+            }
+        }
+    }
 }
