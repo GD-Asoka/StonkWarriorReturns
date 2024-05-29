@@ -26,8 +26,8 @@ public class StockPriceManager : MonoBehaviour
     [SerializeField] [Range(2.5f, 35f)] private float maxStockWeight = 10f;
     [SerializeField] private float _stockStartDelay = 1f;
     public bool gameRunning { get; private set; } = true;
-    public event UnityAction<Dictionary<StocksScriptableObject, StockValues>> UpdatePrices;
-    public event UnityAction<NewsHeadlineScriptableObject> NewsCall;
+    public static event UnityAction<Dictionary<StocksScriptableObject, StockValues>> UpdatePrices;
+    public static event UnityAction<NewsHeadlineScriptableObject> NewsCall;
     private List<NewsHeadlineScriptableObject> activeNewsHeadlines = new List<NewsHeadlineScriptableObject>();
 
 

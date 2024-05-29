@@ -14,12 +14,12 @@ public class BasicAIScript : TraderScript
 
     private void OnEnable()
     {
-        StockPriceManager.INSTANCE.UpdatePrices += UpdatePrices;
+        StockPriceManager.UpdatePrices += UpdatePrices;
     }
 
     private void OnDisable()
     {
-        StockPriceManager.INSTANCE.UpdatePrices -= UpdatePrices;
+        StockPriceManager.UpdatePrices -= UpdatePrices;
     }
 
     protected override void Awake()

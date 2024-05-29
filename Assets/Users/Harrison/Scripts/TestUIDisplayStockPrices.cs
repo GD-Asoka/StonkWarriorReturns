@@ -12,26 +12,23 @@ public class TestUIDisplayStockPrices : MonoBehaviour
     private void OnEnable()
     {
         text = GetComponent<TMP_Text>();
-        if (StockPriceManager.INSTANCE != null)
-        {
-            StockPriceManager.INSTANCE.UpdatePrices += UpdateStock;
-        }
+        
+            StockPriceManager.UpdatePrices += UpdateStock;
+        
     }
     private void Start()
     {
         text = GetComponent<TMP_Text>();
-        if (StockPriceManager.INSTANCE != null)
-        {
-            StockPriceManager.INSTANCE.UpdatePrices += UpdateStock;
-        }
+        
+            StockPriceManager.UpdatePrices += UpdateStock;
+        
     }
 
     private void OnDisable()
     {
-        if (StockPriceManager.INSTANCE != null)
-        {
-            StockPriceManager.INSTANCE.UpdatePrices -= UpdateStock;
-        }
+        
+            StockPriceManager.UpdatePrices -= UpdateStock;
+        
     }
 
     public void UpdateStock(Dictionary<StocksScriptableObject, StockPriceManager.StockValues> stocksDict)
