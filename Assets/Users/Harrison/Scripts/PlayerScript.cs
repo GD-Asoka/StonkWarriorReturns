@@ -60,6 +60,10 @@ public class PlayerScript : TraderScript
 
     public void InputSwapStock(InputAction.CallbackContext context)
     {
+        if (!context.started)
+        {
+            return;
+        }
         int direction = (int)Mathf.Sign(context.ReadValue<float>());
         _stockSelected += direction;
         if (_stockSelected < 0)

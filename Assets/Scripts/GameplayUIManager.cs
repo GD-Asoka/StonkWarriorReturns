@@ -30,12 +30,12 @@ public class GameplayUIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        StockPriceManager.INSTANCE.NewsCall += UpdateNews;
+        StockPriceManager.NewsCall += UpdateNews;
     }
 
     private void OnDisable()
     {
-        StockPriceManager.INSTANCE.NewsCall -= UpdateNews;        
+        StockPriceManager.NewsCall -= UpdateNews;        
     }
 
     private void Update()

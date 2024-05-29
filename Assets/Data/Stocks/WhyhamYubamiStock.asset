@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stockName: Whyham Yubami
   acronym: WHYB
-  startingValueRange: {x: 10, y: 10}
+  startingValueRange: {x: 1250, y: 2000}
   minMaxDefaultTrend: {x: -0.15, y: 0.15}
   color: {r: 0, g: 0.5429058, b: 1, a: 1}

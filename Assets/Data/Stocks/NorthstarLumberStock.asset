@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stockName: Northstar Lumber
   acronym: NSLB
-  startingValueRange: {x: 10, y: 10}
+  startingValueRange: {x: 69, y: 250}
   minMaxDefaultTrend: {x: -0.35, y: 0.35}
   color: {r: 0.8584906, g: 0.74029064, b: 0.5709772, a: 1}

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stockName: Neptuna
   acronym: NPTN
-  startingValueRange: {x: 10, y: 10}
+  startingValueRange: {x: 65, y: 135}
   minMaxDefaultTrend: {x: -1, y: 1}
   color: {r: 0, g: 1, b: 0.59672904, a: 1}

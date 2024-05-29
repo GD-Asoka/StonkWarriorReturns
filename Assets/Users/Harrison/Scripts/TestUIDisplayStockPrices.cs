@@ -14,7 +14,7 @@ public class TestUIDisplayStockPrices : MonoBehaviour
         text = GetComponent<TMP_Text>();
         if (StockPriceManager.INSTANCE != null)
         {
-            StockPriceManager.INSTANCE.UpdatePrices += UpdateStock;
+            StockPriceManager.UpdatePrices += UpdateStock;
         }
     }
     private void Start()
@@ -22,7 +22,7 @@ public class TestUIDisplayStockPrices : MonoBehaviour
         text = GetComponent<TMP_Text>();
         if (StockPriceManager.INSTANCE != null)
         {
-            StockPriceManager.INSTANCE.UpdatePrices += UpdateStock;
+            StockPriceManager.UpdatePrices += UpdateStock;
         }
     }
 
@@ -30,7 +30,7 @@ public class TestUIDisplayStockPrices : MonoBehaviour
     {
         if (StockPriceManager.INSTANCE != null)
         {
-            StockPriceManager.INSTANCE.UpdatePrices -= UpdateStock;
+            StockPriceManager.UpdatePrices -= UpdateStock;
         }
     }
 

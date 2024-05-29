@@ -41,7 +41,7 @@ public class GraphHandler : MonoBehaviour
     {
         if (StockPriceManager.INSTANCE != null)
         {
-            StockPriceManager.INSTANCE.UpdatePrices += ExampleFunction;
+            StockPriceManager.UpdatePrices += ExampleFunction;
         }
         PlayerScript.SwappedStock += StockSwapped;
     }
@@ -49,7 +49,7 @@ public class GraphHandler : MonoBehaviour
     {
         if (StockPriceManager.INSTANCE != null)
         {
-            StockPriceManager.INSTANCE.UpdatePrices -= ExampleFunction;
+            StockPriceManager.UpdatePrices -= ExampleFunction;
         }
         PlayerScript.SwappedStock -= StockSwapped;
     }
