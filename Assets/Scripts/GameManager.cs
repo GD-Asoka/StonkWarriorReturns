@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("GameplayScene1");
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void Initialize()
     {
         enemyTraders = FindEnemyTraders();

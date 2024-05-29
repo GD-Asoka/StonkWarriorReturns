@@ -24,7 +24,8 @@ public class TestUIDisplayStocksOwned : MonoBehaviour
         for (int s = 0; s < _stocks.Count; s++)
         {
             //Debug.Log(_stocks[s].stockName);
-            textToDisplay += $"{_stocks[s].stockName} Owned: {PlayerScript.INSTANCE.GetStocksOwned(_stocks[s])} ";
+            //ABHI: CHANGED STOCK NAME TO ACRONYM
+            textToDisplay += $"{_stocks[s].acronym} Owned: {PlayerScript.INSTANCE.GetStocksOwned(_stocks[s])} ";
             if (PlayerScript.INSTANCE._stockSelected == s)
             {
                 switch (PlayerScript.INSTANCE.state)

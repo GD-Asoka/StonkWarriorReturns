@@ -38,19 +38,15 @@ public class GraphHandler : MonoBehaviour
     }
 
     private void OnEnable()
-    {
-        if (StockPriceManager.INSTANCE != null)
-        {
-            StockPriceManager.UpdatePrices += ExampleFunction;
-        }
+    {        
+        StockPriceManager.UpdatePrices += ExampleFunction;
+        
         PlayerScript.SwappedStock += StockSwapped;
     }
     private void OnDisable()
-    {
-        if (StockPriceManager.INSTANCE != null)
-        {
-            StockPriceManager.UpdatePrices -= ExampleFunction;
-        }
+    {        
+        StockPriceManager.UpdatePrices -= ExampleFunction;
+        
         PlayerScript.SwappedStock -= StockSwapped;
     }
 
@@ -427,9 +423,11 @@ public class GraphHandler : MonoBehaviour
         }
         pointsList.Add(outline.GetComponent<RectTransform>());        
 
-        if (i%10 == 0)
+        if (i>10 && !xMultSet)
         {
             xVal = i * xMult;
+            panSpeed = 50;
+            xMultSet = true;
         }        
 
         print(value);
@@ -466,7 +464,7 @@ public class GraphHandler : MonoBehaviour
             outline.SetActive(false);
 
 
-        AdjustZoom(outline.GetComponent<RectTransform>().position);
+       // AdjustZoom(outline.GetComponent<RectTransform>().position);
     }
 
     private void ChangePointInternal(int index, Vector2 newValue)
