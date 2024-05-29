@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae86565a93ecb147a3e3ecb8a02532d, type: 3}
   m_Name: BigChungusStock
   m_EditorClassIdentifier: 
-  stockName: Stock Name
-  acronym: 
-  startingValueRange: {x: 10, y: 10}
-  minMaxDefaultTrend: {x: -1, y: 1}
+  stockName: Big Chungus
+  acronym: BGCH
+  startingValueRange: {x: 55, y: 85}
+  minMaxDefaultTrend: {x: -0.45, y: 0.45}
   color: {r: 0.9716981, g: 0.93204796, b: 0, a: 1}
