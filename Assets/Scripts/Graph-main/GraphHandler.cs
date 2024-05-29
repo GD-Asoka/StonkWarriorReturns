@@ -43,6 +43,7 @@ public class GraphHandler : MonoBehaviour
         {
             StockPriceManager.INSTANCE.UpdatePrices += ExampleFunction;
         }
+        PlayerScript.SwappedStock += StockSwapped;
     }
     private void OnDisable()
     {
@@ -50,6 +51,7 @@ public class GraphHandler : MonoBehaviour
         {
             StockPriceManager.INSTANCE.UpdatePrices -= ExampleFunction;
         }
+        PlayerScript.SwappedStock -= StockSwapped;
     }
 
     [SerializeField] private StocksScriptableObject stockToWatch;
@@ -233,6 +235,8 @@ public class GraphHandler : MonoBehaviour
         recentlyLockedPoints = new List<int>();
         fixedHoveredPoints = new List<int>();
     }
+
+    private Vector3 topPos, botPos, centerPos;
     private void Start()
     {
         if (CheckForErrors())
@@ -240,6 +244,12 @@ public class GraphHandler : MonoBehaviour
         GS = GetComponent<GraphSettings>();
         PrepareGraph();
         //ExampleFunction();
+        topPos = topLimit.TransformPoint(topLimit.localPosition);
+        botPos = topLimit.TransformPoint(botLimit.localPosition);
+        centerPos = topLimit.TransformPoint(centerLimit.localPosition);
+        GS.ChangeColor(stockToWatch.color);
+
+        
     }
 
     public float panSpeed = 5, zoomSpeed = 1;
@@ -281,34 +291,58 @@ public class GraphHandler : MonoBehaviour
             UpdatePoints();
         if (fixedHoveredPoints.Count > 0)
             UpdatePointOutlines();
-
-        if(pointsList.Count() > 0)
-        {
-            foreach (RectTransform rt in pointsList)
-            {
-                print(rt.position.y);
-                print(rt.localPosition);
-                print(GC.position);
-                print(GC.position - rt.position);
-                print(topLimit.position.y);
-                //if (rt.position.y < topLimit.position.y) break;
-                //if (rt.position.y > botLimit.position.y) break;
-                //if (topLimit.position.y - (rt.position.y -  < 0)
-                //{
-                //    targetZoom.y = Mathf.Clamp(targetZoom.y - zoomSpeed, 0.1f, 0.9f);
-                //}
-                //if (botLimit.position.y - rt.position.y > 0)
-                //{
-                //    targetZoom.y = Mathf.Clamp(targetZoom.y + zoomSpeed, 0.1f, 0.9f);
-                //}
-            }
-        }
-
+        
+        //AdjustZoom();   
         zoom = Vector2.Lerp(zoom, targetZoom, GS.SmoothZoomSpeed * Time.deltaTime);
         targetMoveOffset.x += panSpeed * Time.deltaTime;
         moveOffset = Vector2.Lerp(moveOffset, targetMoveOffset, GS.SmoothMoveSpeed * Time.deltaTime);
         //moveOffset = Vector2.Lerp(moveOffset, targetMoveOffset, GS.SmoothMoveSpeed * Time.deltaTime);
     }
+    public float zoomThreshold = 50;
+    private void AdjustZoom()
+    {
+        if (points.Count < 0)
+        {
+            return;
+        }
+        
+        float averageY = 0f;
+        foreach (RectTransform rt in pointsList)
+        {
+            Vector2 p1 = rt.TransformPoint(rt.localPosition);
+            averageY += p1.y;
+            //if (p1.y > topPos.y || p1.y < botPos.y)
+            //{
+            //    targetZoom = new Vector2(Mathf.Clamp(targetZoom.x - 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y - 0.01f, 0.1f, 0.9f));
+            //}
+            //else if(Mathf.Abs(centerPos.y - p1.y) < zoomThreshold)
+            //{
+            //    targetZoom = new Vector2(Mathf.Clamp(targetZoom.x + 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y + 0.01f, 0.1f, 0.9f));
+            //}
+        }
+        averageY /= pointsList.Count;
+
+        //Determine proximity to limits and adjust zoom accordingly
+        if (Mathf.Abs(averageY - topRight.y) < zoomThreshold)
+        {
+            targetZoom = new Vector2(Mathf.Clamp(targetZoom.x - 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y - 0.01f, 0.1f, 0.9f));
+        }
+        else if (Mathf.Abs(averageY - bottomLeft.y) < zoomThreshold)
+        {
+            targetZoom = new Vector2(Mathf.Clamp(targetZoom.x - 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y - 0.01f, 0.1f, 0.9f));
+        }
+        else if (Mathf.Abs(averageY - (topRight.y + bottomLeft.y)/2) < zoomThreshold)
+        {
+            targetZoom = new Vector2(Mathf.Clamp(targetZoom.x + 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y + 0.01f, 0.1f, 0.9f));
+        }
+    }
+
+    public void StockSwapped(StocksScriptableObject newStock)
+    {
+        stockToWatch = newStock;
+        GS.ChangeColor(newStock.color);
+    }
+
     public GameObject GraphParent;
     private void PrepareGraph()
     {
@@ -355,6 +389,10 @@ public class GraphHandler : MonoBehaviour
         //SetCornerValues(Vector2.zero, new Vector2(3f, 3f * GS.GraphSize.y / GS.GraphSize.x));
         CreateSelectionTypes();
         UpdateGraphInternal(UpdateMethod.All);
+
+        topLimit.SetParent(graphContent);
+        botLimit.SetParent(graphContent);
+        centerLimit.SetParent(graphContent);
     }
 
     private GameObject CreateParent(string name)
@@ -384,8 +422,8 @@ public class GraphHandler : MonoBehaviour
 
     public float xMult = 1, yMult = 1, xVal = 0, yVal = 0;
     public bool xMultSet = false;
-    public List<RectTransform> pointsList;
-    public RectTransform topLimit, botLimit;
+    public List<RectTransform> pointsList = new List<RectTransform>(10);
+    public RectTransform topLimit, botLimit, centerLimit;
     private void CreatePointInternal(Vector2 value)
     {
         int i = points.Count;
@@ -406,7 +444,7 @@ public class GraphHandler : MonoBehaviour
         pointRects.Add(pointRectTransform);
         image.sprite = GS.PointSprite;
 
-        if (pointsList.Count() >= 10)
+        if (pointsList.Count() > 10)
         {
             pointsList.RemoveAt(0);
         }

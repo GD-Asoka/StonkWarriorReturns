@@ -57,6 +57,12 @@ public class GraphSettings : MonoBehaviour
         get { return lineColor; }
         set { lineColor = value; GH.UpdateGraphInternal(GraphHandler.UpdateMethod.UpdateContent); }
     }
+
+    public void ChangeColor(Color color)
+    {
+        lineColor = color;
+    }
+
     [Space]
     public Sprite PointSprite;
     [SerializeField] private float pointRadius = 5f;
