@@ -16,4 +16,4 @@ MonoBehaviour:
   acronym: NSLB
   startingValueRange: {x: 10, y: 10}
   minMaxDefaultTrend: {x: -1, y: 1}
-  color: {r: 0.7075472, g: 0.41386577, b: 0, a: 1}
+  color: {r: 0.8867924, g: 0.7096663, b: 0.45594516, a: 1}
