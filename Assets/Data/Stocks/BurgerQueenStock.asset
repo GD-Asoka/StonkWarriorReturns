@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae86565a93ecb147a3e3ecb8a02532d, type: 3}
   m_Name: BurgerQueenStock
   m_EditorClassIdentifier: 
-  stockName: Burger Queen
-  acronym: BRQN
-  startingValueRange: {x: 150, y: 200}
+  stockName: Stock Name
+  acronym: 
+  startingValueRange: {x: 10, y: 10}
   minMaxDefaultTrend: {x: -1, y: 1}
+  color: {r: 1, g: 0.524459, b: 0, a: 1}

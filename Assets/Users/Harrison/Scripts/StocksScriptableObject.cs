@@ -9,4 +9,5 @@ public class StocksScriptableObject : ScriptableObject
     public string acronym = "";
     public Vector2 startingValueRange = new Vector2(1, 1);
     public Vector2 minMaxDefaultTrend = new Vector2(-1, 1);
+    public Color color = Color.white;
 }

@@ -43,6 +43,7 @@ public class GraphHandler : MonoBehaviour
         {
             StockPriceManager.INSTANCE.UpdatePrices += ExampleFunction;
         }
+        PlayerScript.SwappedStock += StockSwapped;
     }
     private void OnDisable()
     {
@@ -50,6 +51,7 @@ public class GraphHandler : MonoBehaviour
         {
             StockPriceManager.INSTANCE.UpdatePrices -= ExampleFunction;
         }
+        PlayerScript.SwappedStock -= StockSwapped;
     }
 
     [SerializeField] private StocksScriptableObject stockToWatch;
@@ -233,6 +235,8 @@ public class GraphHandler : MonoBehaviour
         recentlyLockedPoints = new List<int>();
         fixedHoveredPoints = new List<int>();
     }
+
+    private Vector3 topPos, botPos, centerPos;
     private void Start()
     {
         if (CheckForErrors())
@@ -240,7 +244,16 @@ public class GraphHandler : MonoBehaviour
         GS = GetComponent<GraphSettings>();
         PrepareGraph();
         //ExampleFunction();
+        topPos = topLimit.TransformPoint(topLimit.localPosition);
+        botPos = topLimit.TransformPoint(botLimit.localPosition);
+        centerPos = topLimit.TransformPoint(centerLimit.localPosition);
+        GS.ChangeColor(stockToWatch.color);
+        print(topRight.y);
+        print(bottomLeft.y);        
     }
+
+    public float panSpeed = 5, zoomSpeed = 1;
+    private RectTransform GC;
     private void Update()
     {
         if (Input.GetKey(KeyCode.LeftShift))
@@ -278,10 +291,60 @@ public class GraphHandler : MonoBehaviour
             UpdatePoints();
         if (fixedHoveredPoints.Count > 0)
             UpdatePointOutlines();
+        
+        AdjustZoom();   
         zoom = Vector2.Lerp(zoom, targetZoom, GS.SmoothZoomSpeed * Time.deltaTime);
+        targetMoveOffset.x += panSpeed * Time.deltaTime;
         moveOffset = Vector2.Lerp(moveOffset, targetMoveOffset, GS.SmoothMoveSpeed * Time.deltaTime);
         //moveOffset = Vector2.Lerp(moveOffset, targetMoveOffset, GS.SmoothMoveSpeed * Time.deltaTime);
     }
+    public float zoomThreshold = 50;
+    private void AdjustZoom()
+    {
+        if (points.Count < 0)
+        {
+            return;
+        }
+        
+        float averageY = 0f;
+        foreach (RectTransform rt in pointsList)
+        {
+            Vector2 p1 = rt.TransformPoint(rt.localPosition);
+            //Vector2 p1 = rt.position;
+            averageY += p1.y;
+            //if (p1.y > topPos.y || p1.y < botPos.y)
+            //{
+            //    targetZoom = new Vector2(Mathf.Clamp(targetZoom.x - 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y - 0.01f, 0.1f, 0.9f));
+            //}
+            //else if(Mathf.Abs(centerPos.y - p1.y) < zoomThreshold)
+            //{
+            //    targetZoom = new Vector2(Mathf.Clamp(targetZoom.x + 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y + 0.01f, 0.1f, 0.9f));
+            //}
+        }
+        averageY /= pointsList.Count;
+
+        //Determine proximity to limits and adjust zoom accordingly
+        if (Mathf.Abs(averageY - topPos.y) < zoomThreshold)
+        {
+            targetZoom = new Vector2(Mathf.Clamp(targetZoom.x - 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y - 0.01f, 0.1f, 0.9f));
+        }
+        else if (Mathf.Abs(averageY - botPos.y) < zoomThreshold)
+        {
+            targetZoom = new Vector2(Mathf.Clamp(targetZoom.x - 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y - 0.01f, 0.1f, 0.9f));
+        }
+        else if (Mathf.Abs(averageY - centerPos.y) < zoomThreshold)
+        {
+            targetZoom = new Vector2(Mathf.Clamp(targetZoom.x + 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y + 0.01f, 0.1f, 0.9f));
+        }
+    }
+
+    public void StockSwapped(StocksScriptableObject newStock)
+    {
+        stockToWatch = newStock;
+        GS.ChangeColor(newStock.color);
+    }
+
+    public GameObject GraphParent;
     private void PrepareGraph()
     {
         if (canvas == null)
@@ -294,7 +357,7 @@ public class GraphHandler : MonoBehaviour
         if (GetComponent<RectTransform>() == null)
             this.gameObject.AddComponent<RectTransform>();
         graph = this.gameObject.GetComponent<RectTransform>();
-        graph.SetParent(canvas.transform);
+        graph.SetParent(GraphParent.transform);
         graph.anchoredPosition = Vector2.zero;
         graph.sizeDelta = GS.GraphSize;
 
@@ -313,6 +376,7 @@ public class GraphHandler : MonoBehaviour
         graphContent = new GameObject("GraphContent").AddComponent<RectTransform>();
         graphContent.SetParent(backgroundRect.transform);
         graphContent.sizeDelta = Vector2.zero;
+        GC = graphContent.GetComponent<RectTransform>();
 
         gridParent = CreateParent("GridParent");
         lineParent = CreateParent("LineParent");
@@ -326,6 +390,10 @@ public class GraphHandler : MonoBehaviour
         //SetCornerValues(Vector2.zero, new Vector2(3f, 3f * GS.GraphSize.y / GS.GraphSize.x));
         CreateSelectionTypes();
         UpdateGraphInternal(UpdateMethod.All);
+
+        topLimit.SetParent(graphContent);
+        botLimit.SetParent(graphContent);
+        centerLimit.SetParent(graphContent);
     }
 
     private GameObject CreateParent(string name)
@@ -355,21 +423,20 @@ public class GraphHandler : MonoBehaviour
 
     public float xMult = 1, yMult = 1, xVal = 0, yVal = 0;
     public bool xMultSet = false;
+    public List<RectTransform> pointsList = new List<RectTransform>(10);
+    public RectTransform topLimit, botLimit, centerLimit;
     private void CreatePointInternal(Vector2 value)
     {
         int i = points.Count;
         GameObject outline = CreatePointOutline(i);
         GameObject point = new GameObject("Point" + i);
-        if (i%10 == 0)
-        {
-            xVal = i * xMult;
-        }
+        
 
         points.Add(point);
         values.Add(value);
 
-        point.transform.SetParent(outline.transform);
-
+        point.transform.SetParent(outline.transform); 
+        
         Image image = point.AddComponent<Image>();
         image.color = GS.PointColor;
         pointImages.Add(image);
@@ -378,9 +445,19 @@ public class GraphHandler : MonoBehaviour
         pointRects.Add(pointRectTransform);
         image.sprite = GS.PointSprite;
 
+        if (pointsList.Count() > 10)
+        {
+            pointsList.RemoveAt(0);
+        }
+        pointsList.Add(outline.GetComponent<RectTransform>());        
+
+        if (i%10 == 0)
+        {
+            xVal = i * xMult;
+        }        
+
         print(value);
-        //targetZoom = value + value * GS.ZoomSpeed / 100f;
-        targetMoveOffset = new Vector2(xVal,yVal);
+        //targetMoveOffset = new Vector2(xVal,yVal);
         //ChangeZoomPoint(value);
 
         EventTrigger trigger = point.AddComponent<EventTrigger>();

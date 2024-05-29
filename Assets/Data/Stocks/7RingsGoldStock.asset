@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae86565a93ecb147a3e3ecb8a02532d, type: 3}
   m_Name: 7RingsGoldStock
   m_EditorClassIdentifier: 
-  stockName: 7 Rings Gold
-  acronym: SRGD
-  startingValueRange: {x: 1000, y: 1250}
-  minMaxDefaultTrend: {x: -1, y: 1.25}
+  stockName: Stock Name
+  acronym: 
+  startingValueRange: {x: 10, y: 10}
+  minMaxDefaultTrend: {x: -1, y: 1}
+  color: {r: 0, g: 0.9811321, b: 0.011441968, a: 1}

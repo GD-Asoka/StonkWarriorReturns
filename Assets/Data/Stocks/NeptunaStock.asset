@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae86565a93ecb147a3e3ecb8a02532d, type: 3}
   m_Name: NeptunaStock
   m_EditorClassIdentifier: 
-  stockName: Neptuna
-  acronym: NPTN
-  startingValueRange: {x: 125, y: 175}
-  minMaxDefaultTrend: {x: -0.85, y: 0.85}
+  stockName: Stock Name
+  acronym: 
+  startingValueRange: {x: 10, y: 10}
+  minMaxDefaultTrend: {x: -1, y: 1}
+  color: {r: 0, g: 1, b: 0.59672904, a: 1}
