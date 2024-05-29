@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stockName: Cola Coke
   acronym: CLCK
-  startingValueRange: {x: 125, y: 175}
+  startingValueRange: {x: 10, y: 10}
   minMaxDefaultTrend: {x: -1.25, y: 1.25}
   color: {r: 0, g: 1, b: 0.9771781, a: 1}

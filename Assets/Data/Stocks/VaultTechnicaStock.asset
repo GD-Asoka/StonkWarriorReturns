@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stockName: Vault-Technica
   acronym: VTCA
-  startingValueRange: {x: 850, y: 1000}
+  startingValueRange: {x: 10, y: 10}
   minMaxDefaultTrend: {x: -1.8, y: 1.8}
   color: {r: 0.40643978, g: 0, b: 1, a: 1}
