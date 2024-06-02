@@ -97,6 +97,7 @@ public class PlayerScript : TraderScript
     {
         base.Start();
         _stockSelected = 0;
+        SwappedStock?.Invoke(_availableStocks[_stockSelected]);
         _buyoutMod = GameManager.INSTANCE.difficultySettings.playerBuyoutMod;
     }
 
