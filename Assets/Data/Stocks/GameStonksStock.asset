@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stockName: Game Stonks
   acronym: GMST
-  startingValueRange: {x: 67, y: 90}
+  startingValueRange: {x: 5, y: 25}
   minMaxDefaultTrend: {x: -2.5, y: 2.5}
   color: {r: 0.97077036, g: 0, b: 1, a: 1}

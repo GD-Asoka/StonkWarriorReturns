@@ -38,19 +38,15 @@ public class GraphHandler : MonoBehaviour
     }
 
     private void OnEnable()
-    {
-        if (StockPriceManager.INSTANCE != null)
-        {
-            StockPriceManager.INSTANCE.UpdatePrices += ExampleFunction;
-        }
+    {        
+        StockPriceManager.UpdatePrices += ExampleFunction;
+        
         PlayerScript.SwappedStock += StockSwapped;
     }
     private void OnDisable()
-    {
-        if (StockPriceManager.INSTANCE != null)
-        {
-            StockPriceManager.INSTANCE.UpdatePrices -= ExampleFunction;
-        }
+    {        
+        StockPriceManager.UpdatePrices -= ExampleFunction;
+        
         PlayerScript.SwappedStock -= StockSwapped;
     }
 
@@ -299,42 +295,19 @@ public class GraphHandler : MonoBehaviour
         //moveOffset = Vector2.Lerp(moveOffset, targetMoveOffset, GS.SmoothMoveSpeed * Time.deltaTime);
     }
     public float zoomThreshold = 50;
-    private void AdjustZoom()
+    private void AdjustZoom(Vector2 pos)
     {
-        if (points.Count < 0)
-        {
-            return;
-        }
-        
-        float averageY = 0f;
-        foreach (RectTransform rt in pointsList)
-        {
-            Vector2 p1 = rt.TransformPoint(rt.localPosition);
-            averageY += p1.y;
-            //if (p1.y > topPos.y || p1.y < botPos.y)
-            //{
-            //    targetZoom = new Vector2(Mathf.Clamp(targetZoom.x - 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y - 0.01f, 0.1f, 0.9f));
-            //}
-            //else if(Mathf.Abs(centerPos.y - p1.y) < zoomThreshold)
-            //{
-            //    targetZoom = new Vector2(Mathf.Clamp(targetZoom.x + 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y + 0.01f, 0.1f, 0.9f));
-            //}
-        }
-        averageY /= pointsList.Count;
-
-        //Determine proximity to limits and adjust zoom accordingly
-        if (Mathf.Abs(averageY - topRight.y) < zoomThreshold)
-        {
-            targetZoom = new Vector2(Mathf.Clamp(targetZoom.x - 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y - 0.01f, 0.1f, 0.9f));
-        }
-        else if (Mathf.Abs(averageY - bottomLeft.y) < zoomThreshold)
-        {
-            targetZoom = new Vector2(Mathf.Clamp(targetZoom.x - 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y - 0.01f, 0.1f, 0.9f));
-        }
-        else if (Mathf.Abs(averageY - (topRight.y + bottomLeft.y)/2) < zoomThreshold)
-        {
-            targetZoom = new Vector2(Mathf.Clamp(targetZoom.x + 0.01f, 0.1f, 0.9f), Mathf.Clamp(targetZoom.y + 0.01f, 0.1f, 0.9f));
-        }
+        Vector2 zoomPos = (pos - new Vector2(graphContent.transform.position.x, graphContent.transform.position.y)) / contentScale;
+        Vector2 top= ((Vector2)topLimit.position - new Vector2(graphContent.transform.position.x, graphContent.transform.position.y)) / contentScale;
+        Vector2 bot= ((Vector2)botLimit.position - new Vector2(graphContent.transform.position.x, graphContent.transform.position.y)) / contentScale;
+        Vector2 cent= ((Vector2)centerLimit.position - new Vector2(graphContent.transform.position.x, graphContent.transform.position.y)) / contentScale;
+        ChangeZoomPoint(zoomPos);
+        if(Vector2.Distance(zoomPos, top) < zoomThreshold)
+            targetZoom = zoom - zoom * GS.ZoomSpeed / 100f;
+        else if(Vector2.Distance(zoomPos, bot) < zoomThreshold)
+            targetZoom = zoom - zoom * GS.ZoomSpeed / 100f;
+        else if(Vector2.Distance(zoomPos, cent) < zoomThreshold)
+            targetZoom = zoom + zoom * GS.ZoomSpeed / 100f;
     }
 
     public void StockSwapped(StocksScriptableObject newStock)
@@ -450,9 +423,11 @@ public class GraphHandler : MonoBehaviour
         }
         pointsList.Add(outline.GetComponent<RectTransform>());        
 
-        if (i%10 == 0)
+        if (i>10 && !xMultSet)
         {
             xVal = i * xMult;
+            panSpeed = 50;
+            xMultSet = true;
         }        
 
         print(value);
@@ -487,6 +462,9 @@ public class GraphHandler : MonoBehaviour
         SortIndices();
         if (value.x < bottomLeft.x || value.x > topRight.x)
             outline.SetActive(false);
+
+
+       // AdjustZoom(outline.GetComponent<RectTransform>().position);
     }
 
     private void ChangePointInternal(int index, Vector2 newValue)
@@ -580,7 +558,6 @@ public class GraphHandler : MonoBehaviour
                 yAxisTexts.Add(yText);
                 yAxisTextRects.Add(textRect);
             }
-
         }
     }
 

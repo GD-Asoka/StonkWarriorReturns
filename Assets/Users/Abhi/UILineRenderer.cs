@@ -29,7 +29,7 @@ public class UILineRenderer : Graphic
     {
         if (StockPriceManager.INSTANCE != null)
         {
-            StockPriceManager.INSTANCE.UpdatePrices += UpdateStock;
+            StockPriceManager.UpdatePrices += UpdateStock;
         }
         InvokeRepeating(nameof(UpdateGraph), repeatRate, repeatRate);
         if(UnityEngine.Application.isPlaying)
@@ -42,7 +42,7 @@ public class UILineRenderer : Graphic
     {
         if (StockPriceManager.INSTANCE != null)
         {
-            StockPriceManager.INSTANCE.UpdatePrices += UpdateStock;
+            StockPriceManager.UpdatePrices += UpdateStock;
         }
         CancelInvoke(nameof(UpdateGraph));
     }

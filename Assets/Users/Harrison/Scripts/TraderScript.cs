@@ -13,6 +13,8 @@ public class TraderScript : MonoBehaviour
     public bool boughtOut { get; protected set; } = false;
     public bool isPlayer { get; protected set; } = false;
 
+    public string traderName { get; protected set; }
+
     protected virtual void Awake()
     {
 
