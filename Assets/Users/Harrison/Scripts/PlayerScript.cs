@@ -10,6 +10,8 @@ public class PlayerScript : TraderScript
     public static event UnityAction<StocksScriptableObject> SwappedStock;
     public static event UnityAction<StocksScriptableObject, int> PlayerStockAmountChange;
     [SerializeField] [Range(1f, 2f)] private float _holdMultiplyer = 1.25f;
+    [SerializeField] private float _timeBetweenBuysSells = 0.05f;
+    private float _buySellCooldown = 0;
     private float _buySellMod = 1;
     public int _stockSelected { get; private set; } = 0;
 
@@ -33,6 +35,7 @@ public class PlayerScript : TraderScript
         if (context.started)
         {
             state = MarketState.BUYING;
+            _buySellCooldown = 0;
         }
         if (context.canceled)
         {
@@ -48,6 +51,7 @@ public class PlayerScript : TraderScript
         if (context.started)
         {
             state = MarketState.SELLING;
+            _buySellCooldown = 0;
         }
         if (context.canceled)
         {
@@ -93,27 +97,33 @@ public class PlayerScript : TraderScript
     {
         base.Start();
         _stockSelected = 0;
+        SwappedStock?.Invoke(_availableStocks[_stockSelected]);
         _buyoutMod = GameManager.INSTANCE.difficultySettings.playerBuyoutMod;
     }
 
     protected override void Update()
     {
         base.Update();
+        _buySellCooldown -= Time.deltaTime;
         if (_lastState != state)
         {
             _buySellMod = 1;
         }
         if (state != MarketState.NONE)
         {
-            if (state == MarketState.BUYING)
+            if (_buySellCooldown <= 0)
             {
-                BuyStock(_availableStocks[_stockSelected], (int)_buySellMod);
+                if (state == MarketState.BUYING)
+                {
+                    BuyStock(_availableStocks[_stockSelected], (int)_buySellMod);
+                }
+                else
+                {
+                    SellStock(_availableStocks[_stockSelected], (int)_buySellMod);
+                }
+                _buySellMod = Mathf.Min(_holdMultiplyer * _buySellMod, 10000);
+                _buySellCooldown = _timeBetweenBuysSells;
             }
-            else
-            {
-                SellStock(_availableStocks[_stockSelected], (int)_buySellMod);
-            }
-            _buySellMod = Mathf.Min(_holdMultiplyer * _buySellMod, 10000);
         }
 
         _lastState = state;
