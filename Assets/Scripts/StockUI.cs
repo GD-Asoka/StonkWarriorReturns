@@ -51,6 +51,7 @@ public class StockUI : MonoBehaviour
     {
         if (_stockToWatch != null)
         {
+            Debug.Log("HELLO");
             if (StockPriceManager.INSTANCE.stockData.ContainsKey(_stockToWatch))
             {
                 PlayerScript.INSTANCE.PlayerBuyStock(_stockToWatch);
