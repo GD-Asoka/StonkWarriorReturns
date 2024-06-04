@@ -76,7 +76,7 @@ public class StockPriceManager : MonoBehaviour
                 float trend = Random.Range(stock.minMaxDefaultTrend.x, stock.minMaxDefaultTrend.y);
                 float trendMod = CalculateStockTrendChange(stock);
                 float stockPrice = CalculateStockPrice(stock, trend, trendMod);
-                stockData[stock] = ChangeStockValue(stock, stockPrice, trend, trendMod);
+                stockData[stock] = ChangeStockValue(stock, stockPrice, trend, trendMod, -1, stockData[stock].numberInCirculation);
                 //Debug.Log($"{stock.stockName}: {stockData[stock].currentPrice}: {stockData[stock].currentTrend}");
             }
             UpdatePrices?.Invoke(stockData);

@@ -14,6 +14,7 @@ public class GraphScript : MonoBehaviour
     private Vector3 _graphZeroPosition;
     private Vector3 _graphMaxPosition;
     private SpriteRenderer _backgroundSpriteRenderer;
+    [SerializeField] private RectTransform _targetSizeRect;
     [SerializeField] private TMP_Text _minValueText;
     [SerializeField] private TMP_Text _maxValueText;
     [SerializeField] private TMP_Text _midValueText;
@@ -44,6 +45,19 @@ public class GraphScript : MonoBehaviour
         _lineRenderer = GetComponent<LineRenderer>();
         _rectTransform = GetComponent<RectTransform>();
         _backgroundSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        _rectTransform.position = Camera.main.ScreenToWorldPoint(_targetSizeRect.position);
+
+        float targetWidthPercent = _targetSizeRect.rect.width / Screen.width;
+        float targetHeightPercent = _targetSizeRect.rect.height / Screen.height;
+
+        float aspect = (float)Screen.width / (float)Screen.height;
+        float worldHeight = Camera.main.orthographicSize * 2;
+        float worldWidth = worldHeight * aspect;
+
+        _rectTransform.sizeDelta = new Vector2(worldWidth * targetWidthPercent, worldHeight * targetHeightPercent);
+
+        _targetSizeRect.gameObject.SetActive(false);
 
         _rectZeroPosition = new Vector3(_rectTransform.position.x, _rectTransform.position.y, 0) - new Vector3(_rectTransform.rect.width / 2, _rectTransform.rect.height / 2, 0);
         _rectMaxPosition = new Vector3(_rectTransform.position.x, _rectTransform.position.y, 0) + new Vector3(_rectTransform.rect.width / 2, _rectTransform.rect.height /2, 0);

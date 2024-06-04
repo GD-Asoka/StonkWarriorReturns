@@ -36,7 +36,7 @@ public class PlayerScript : TraderScript
 
     public MarketState state { get; private set; } = MarketState.NONE;
     private MarketState _lastState = MarketState.NONE;
-    public ActionSelected actionSelected { get; private set; } = ActionSelected.BUYING;
+    public ActionSelected actionSelected = ActionSelected.BUYING;
 
     public void InputBuy(InputAction.CallbackContext context)
     {
@@ -95,16 +95,16 @@ public class PlayerScript : TraderScript
         {
             return;
         }
-        SwappedStock?.Invoke(_availableStocks[_stockSelected]);
         int direction = (int)Mathf.Sign(context.ReadValue<float>());
         if (direction > 0)
         {
-            actionSelected = ActionSelected.BUYING;
+            actionSelected = ActionSelected.SELLING;
         }
         else
         {
-            actionSelected = ActionSelected.SELLING;
+            actionSelected = ActionSelected.BUYING;
         }
+        SwappedStock?.Invoke(_availableStocks[_stockSelected]);
     }
 
     public void InputAction(InputAction.CallbackContext context)
