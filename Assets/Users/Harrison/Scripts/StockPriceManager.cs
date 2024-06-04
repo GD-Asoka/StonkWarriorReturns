@@ -41,8 +41,6 @@ public class StockPriceManager : MonoBehaviour
         }
         INSTANCE = this;
 
-        GameManager.INSTANCE.Initialize();
-
         for (int s = 0; s < stocks.Count; s++)
         {
             if (!stockData.ContainsKey(stocks[s]))
@@ -62,6 +60,7 @@ public class StockPriceManager : MonoBehaviour
 
     private void Start()
     {
+        GameManager.INSTANCE.Initialize();
         StartCoroutine(SimulateMarket());
     }
 

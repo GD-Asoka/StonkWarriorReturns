@@ -31,13 +31,31 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SwapAction",
+                    "type": "Button",
+                    "id": "7ecff7d0-739c-459e-90f5-58568885dec6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PerformAction",
+                    "type": "Button",
+                    "id": "6c8f313b-acf0-43e8-b6e6-3716aea286b4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "fa5415dd-8dcc-47b3-9314-a62a133f4409",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/numpadPlus",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -48,7 +66,7 @@
                 {
                     "name": "",
                     "id": "d41beb94-dab3-42cc-862b-478794b7c482",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/numpadMinus",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -70,7 +88,7 @@
                 {
                     "name": "negative",
                     "id": "b9998f67-cdd3-4ad7-b04a-5100bb5b7875",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -81,13 +99,57 @@
                 {
                     "name": "positive",
                     "id": "eb1f6aa4-348a-42dd-ae11-98293424ad4a",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "SwapStock",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "b2b162cb-3204-450c-a263-6ff90080ea20",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwapAction",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "3b291273-5233-4fb0-aca9-ee0c1dd42e30",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "SwapAction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "41d6851e-115a-4717-92e4-8bba041b32bf",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "SwapAction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "a3580178-db8b-42c5-92a3-b061508d1e76",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PerformAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -10,6 +10,13 @@ public class StockUI : MonoBehaviour
     [SerializeField] private TMP_Text _ownedStockAmountText;
     [SerializeField] private StocksScriptableObject _stockToWatch;
     [SerializeField] private Image _selectedImage;
+    [SerializeField] private Color _selectedColour;
+    [SerializeField] private Image _buyButtonImage;
+    [SerializeField] private Color _buyActiveColour;
+    [SerializeField] private Color _buyInactiveColour;
+    [SerializeField] private Image _sellButtonImage;
+    [SerializeField] private Color _sellActiveColour;
+    [SerializeField] private Color _sellInactiveColour;
 
     private void OnEnable()
     {
@@ -26,14 +33,28 @@ public class StockUI : MonoBehaviour
     private void Start()
     {
         _stockNameText.text = _stockToWatch.stockName;
+        _selectedImage.color = _selectedColour;
     }
 
     public void SelectionChange(StocksScriptableObject stock)
     {
+        _buyButtonImage.color = _buyInactiveColour;
+        _sellButtonImage.color = _sellInactiveColour;
         if (_stockToWatch != stock)
         {
             _selectedImage.gameObject.SetActive(false);
             return;
+        }
+        if (PlayerScript.INSTANCE != null)
+        {
+            if (PlayerScript.INSTANCE.actionSelected == PlayerScript.ActionSelected.BUYING)
+            {
+                _buyButtonImage.color = _buyActiveColour;
+            }
+            else
+            {
+                _sellButtonImage.color = _sellActiveColour;
+            }
         }
         _selectedImage.gameObject.SetActive(true);
     }
