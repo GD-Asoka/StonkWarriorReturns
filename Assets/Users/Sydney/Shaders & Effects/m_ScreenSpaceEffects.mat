@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: m_RetroDithering
+  m_Name: m_ScreenSpaceEffects
   m_Shader: {fileID: -6465566751694194690, guid: abab3000b2301754bbf78c5f23dcf058, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,9 +37,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.29
-    - _ColorRes: 9.21
+    - _Alpha: 1
+    - _ColorRes: 9
+    - _CrtAlpha: 0.1
+    - _DitherAlph: 0.45
     - _DitherSpread: 0.05
+    - _FlickerSpeed: 15
+    - _Float: 50
+    - _Float_1: 1
+    - _Float_2: 15
+    - _Float_3: 0.68
+    - _Float_4: 0.14
+    - _Float_5: 100
     - _Fullscreen_AlphaBlendOperation: 0
     - _Fullscreen_BlendMode: 1
     - _Fullscreen_ColorBlendOperation: 0
@@ -48,7 +57,16 @@ Material:
     - _Fullscreen_DstColorBlend: 10
     - _Fullscreen_SrcAlphaBlend: 1
     - _Fullscreen_SrcColorBlend: 5
-    - _ditherAmount: 0.49
-    m_Colors: []
+    - _LineAmount: 55
+    - _NoiseScale: 170
+    - _ditherAmount: 0.83
+    - _lerpAmount: 0
+    - _lineSpeed: 1.45
+    - _m_Alpha: 1
+    - _noiseAmount: 0.095
+    - _scanlineAmount: 0.22
+    m_Colors:
+    - _NoiseSpeed: {r: 0, g: 0.03, b: 0, a: 0}
+    - _Vector2: {r: 0, g: 0.1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
