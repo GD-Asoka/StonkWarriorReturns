@@ -109,6 +109,39 @@
                 },
                 {
                     "name": "1D Axis",
+                    "id": "e3cd68f1-d185-4f9f-988f-86aa49aebfcb",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwapStock",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "86ca2331-df17-4506-a76c-d81be2163fbe",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwapStock",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "cafff285-e67e-4d43-b381-6932aea3d158",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwapStock",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
                     "id": "b2b162cb-3204-450c-a263-6ff90080ea20",
                     "path": "1DAxis",
                     "interactions": "",
@@ -136,6 +169,39 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "SwapAction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "48f3626d-08c2-4512-a360-861d62eb1584",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwapAction",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "e9fec0b8-950b-40fb-9397-cbd4231c4346",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwapAction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a520b641-b2b3-43e9-bd87-35d5acfb721f",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "SwapAction",
                     "isComposite": false,
                     "isPartOfComposite": true

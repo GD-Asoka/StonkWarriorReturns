@@ -48,14 +48,17 @@ public class GraphScript : MonoBehaviour
 
         _rectTransform.position = Camera.main.ScreenToWorldPoint(_targetSizeRect.position);
 
-        float targetWidthPercent = _targetSizeRect.rect.width / Screen.width;
-        float targetHeightPercent = _targetSizeRect.rect.height / Screen.height;
+        float targetWidthPercent = (_targetSizeRect.rect.width - _minValueText.rectTransform.rect.width) / Screen.width;
+        float targetHeightPercent = (_targetSizeRect.rect.height - _stockValueText.rectTransform.rect.height) / Screen.height;
 
         float aspect = (float)Screen.width / (float)Screen.height;
         float worldHeight = Camera.main.orthographicSize * 2;
         float worldWidth = worldHeight * aspect;
 
-        _rectTransform.sizeDelta = new Vector2(worldWidth * targetWidthPercent, worldHeight * targetHeightPercent);
+        float actualWidth = (worldWidth * targetWidthPercent);
+        float actualHeight = (worldHeight * targetHeightPercent);
+
+        _rectTransform.sizeDelta = new Vector2(actualWidth, actualHeight);
 
         _targetSizeRect.gameObject.SetActive(false);
 
