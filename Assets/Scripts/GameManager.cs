@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerWon()
     {
+        StockPriceManager.INSTANCE.EndGame();
         for (int t = 0; t < enemyTraders.Count; t++)
         {
             if (!enemyTraders[t].boughtOut)
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
     
     public void PlayerLost()
     {
+        StockPriceManager.INSTANCE.EndGame();
 
     }
 

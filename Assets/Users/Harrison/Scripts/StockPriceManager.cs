@@ -259,4 +259,9 @@ public class StockPriceManager : MonoBehaviour
         moneyGainedFromSell = stockData[stock].currentPrice * numToSell;
         return true;
     }
+
+    public void EndGame()
+    {
+        gameRunning = false;
+    }
 }
