@@ -170,7 +170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.3414, y: 0.1254}
+  m_AnchoredPosition: {x: 3.3414, y: 0.12539673}
   m_SizeDelta: {x: 309.6334, y: 79.5665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4957277794375881203
@@ -251,10 +251,10 @@ RectTransform:
   - {fileID: 645581072821947604}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 316.03625}
-  m_SizeDelta: {x: 0, y: -632.0725}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 290, y: 72.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7454436827545930501
 MonoBehaviour:
@@ -272,6 +272,13 @@ MonoBehaviour:
   _ownedStockAmountText: {fileID: 2606878356697543792}
   _stockToWatch: {fileID: 0}
   _selectedImage: {fileID: 3155035617566237152}
+  _selectedColour: {r: 0.83921576, g: 0.8117648, b: 0, a: 1}
+  _buyButtonImage: {fileID: 5072292966913281705}
+  _buyActiveColour: {r: 0, g: 0.8431373, b: 0.21960786, a: 1}
+  _buyInactiveColour: {r: 0, g: 0.3962264, b: 0.10320317, a: 1}
+  _sellButtonImage: {fileID: 6186190847524760861}
+  _sellActiveColour: {r: 0.8431373, g: 0.078431375, b: 0, a: 1}
+  _sellInactiveColour: {r: 0.4528302, g: 0.04212374, b: 0, a: 1}
 --- !u!222 &7941343822408407672
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -482,7 +489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 85.871, y: -0.00010967}
+  m_AnchoredPosition: {x: 85.871, y: -0.00012207031}
   m_SizeDelta: {x: 46.5188, y: 73.801}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8941857255767634970
@@ -613,7 +620,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.3414, y: 0.0001049}
+  m_AnchoredPosition: {x: 3.3414, y: 0.00012207031}
   m_SizeDelta: {x: 304.62, y: 73.801}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5597211260214398968
@@ -690,7 +697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 132.39, y: -0.00010967}
+  m_AnchoredPosition: {x: 132.39, y: -0.00012207031}
   m_SizeDelta: {x: 46.5188, y: 73.801}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8374118116042077595
@@ -1093,7 +1100,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -111, y: 0.00001717}
+  m_AnchoredPosition: {x: -111, y: 0}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5318518537744978768
