@@ -54,8 +54,8 @@ public class GraphScript : MonoBehaviour
         {
             _rectTransform.position = Camera.main.ScreenToWorldPoint(_targetSizeRect.position);
 
-            float targetWidthPercent = (_targetSizeRect.rect.width - _minValueText.rectTransform.rect.width) / Screen.width;
-            float targetHeightPercent = (_targetSizeRect.rect.height - _stockValueText.rectTransform.rect.height) / Screen.height;
+            float targetWidthPercent = (_targetSizeRect.rect.width) / Screen.width;
+            float targetHeightPercent = (_targetSizeRect.rect.height) / Screen.height;
 
 
             float actualWidth = (worldWidth * targetWidthPercent);
@@ -75,11 +75,11 @@ public class GraphScript : MonoBehaviour
         Vector2 sideTextSize = new Vector2(sideTextWidth, sideTextHeight);
         Vector2 topTextSize = new Vector2(topTextWidth, topTextHeight);
 
-        _minValueText.rectTransform.sizeDelta = sideTextSize;
-        _midValueText.rectTransform.sizeDelta = sideTextSize;
-        _maxValueText.rectTransform.sizeDelta = sideTextSize;
+        //_minValueText.rectTransform.sizeDelta = sideTextSize;
+        //_midValueText.rectTransform.sizeDelta = sideTextSize;
+        //_maxValueText.rectTransform.sizeDelta = sideTextSize;
 
-        _stockValueText.rectTransform.sizeDelta = topTextSize;
+        //_stockValueText.rectTransform.sizeDelta = topTextSize;
 
         _rectZeroPosition = new Vector3(_rectTransform.position.x, _rectTransform.position.y, 0) - new Vector3(_rectTransform.rect.width / 2, _rectTransform.rect.height / 2, 0);
         _rectMaxPosition = new Vector3(_rectTransform.position.x, _rectTransform.position.y, 0) + new Vector3(_rectTransform.rect.width / 2, _rectTransform.rect.height /2, 0);
@@ -95,42 +95,42 @@ public class GraphScript : MonoBehaviour
             _backgroundSpriteRenderer.size = new Vector2(_rectTransform.rect.width, _rectTransform.rect.height);
         }
 
-        Vector3 textPosition = Vector3.zero;
+        //Vector3 textPosition = Vector3.zero;
 
-        if (_minValueText != null)
-        {
-            textPosition = _rectZeroPosition;
-            textPosition = new Vector3(textPosition.x - (_minValueText.rectTransform.rect.width / 2) - _sideTextSpacing, textPosition.y, textPosition.z);
-            _minValueText.rectTransform.position = textPosition;
-            _minValueText.text = "Minimum";
-        }
-        if (_maxValueText != null)
-        {
-            textPosition = new Vector3(_rectZeroPosition.x, _rectMaxPosition.y, 0);
-            textPosition = Camera.main.WorldToScreenPoint(textPosition);
-            textPosition = new Vector3(textPosition.x - (_maxValueText.rectTransform.rect.width / 2) - _sideTextSpacing, textPosition.y, textPosition.z);
-            textPosition = Camera.main.ScreenToWorldPoint(textPosition);
-            _maxValueText.rectTransform.position = textPosition;
-            _maxValueText.text = "Maximum";
-        }
-        if (_midValueText != null)
-        {
-            textPosition = new Vector3(_rectZeroPosition.x, (_rectMaxPosition.y + _rectZeroPosition.y) / 2, 0);
-            textPosition = Camera.main.WorldToScreenPoint(textPosition);
-            textPosition = new Vector3(textPosition.x - (_maxValueText.rectTransform.rect.width / 2) - _sideTextSpacing, textPosition.y, textPosition.z);
-            textPosition = Camera.main.ScreenToWorldPoint(textPosition);
-            _midValueText.rectTransform.position = textPosition;
-            _midValueText.text = "Midpoint";
-        }
-        if (_stockValueText != null)
-        {
-            textPosition = new Vector3((_rectMaxPosition.x + _rectZeroPosition.x) / 2, _rectMaxPosition.y, 0);
-            textPosition = Camera.main.WorldToScreenPoint(textPosition);
-            textPosition = new Vector3(textPosition.x, textPosition.y + (_stockValueText.rectTransform.rect.height / 2) + _sideTextSpacing, textPosition.z);
-            textPosition = Camera.main.ScreenToWorldPoint(textPosition);
-            _stockValueText.rectTransform.position = textPosition;
-            _stockValueText.text = $"$0";
-        }
+        //if (_minValueText != null)
+        //{
+        //    textPosition = _rectZeroPosition;
+        //    textPosition = new Vector3(textPosition.x - (_minValueText.rectTransform.rect.width / 2) - _sideTextSpacing, textPosition.y, textPosition.z);
+        //    _minValueText.rectTransform.position = textPosition;
+        //    _minValueText.text = "Minimum";
+        //}
+        //if (_maxValueText != null)
+        //{
+        //    textPosition = new Vector3(_rectZeroPosition.x, _rectMaxPosition.y, 0);
+        //    textPosition = Camera.main.WorldToScreenPoint(textPosition);
+        //    textPosition = new Vector3(textPosition.x - (_maxValueText.rectTransform.rect.width / 2) - _sideTextSpacing, textPosition.y, textPosition.z);
+        //    textPosition = Camera.main.ScreenToWorldPoint(textPosition);
+        //    _maxValueText.rectTransform.position = textPosition;
+        //    _maxValueText.text = "Maximum";
+        //}
+        //if (_midValueText != null)
+        //{
+        //    textPosition = new Vector3(_rectZeroPosition.x, (_rectMaxPosition.y + _rectZeroPosition.y) / 2, 0);
+        //    textPosition = Camera.main.WorldToScreenPoint(textPosition);
+        //    textPosition = new Vector3(textPosition.x - (_maxValueText.rectTransform.rect.width / 2) - _sideTextSpacing, textPosition.y, textPosition.z);
+        //    textPosition = Camera.main.ScreenToWorldPoint(textPosition);
+        //    _midValueText.rectTransform.position = textPosition;
+        //    _midValueText.text = "Midpoint";
+        //}
+        //if (_stockValueText != null)
+        //{
+        //    textPosition = new Vector3((_rectMaxPosition.x + _rectZeroPosition.x) / 2, _rectMaxPosition.y, 0);
+        //    textPosition = Camera.main.WorldToScreenPoint(textPosition);
+        //    textPosition = new Vector3(textPosition.x, textPosition.y + (_stockValueText.rectTransform.rect.height / 2) + _sideTextSpacing, textPosition.z);
+        //    textPosition = Camera.main.ScreenToWorldPoint(textPosition);
+        //    _stockValueText.rectTransform.position = textPosition;
+        //    _stockValueText.text = $"$0";
+        //}
     }
 
     public void ChangeStockWatched(StocksScriptableObject stock)
