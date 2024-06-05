@@ -46,21 +46,40 @@ public class GraphScript : MonoBehaviour
         _rectTransform = GetComponent<RectTransform>();
         _backgroundSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        _rectTransform.position = Camera.main.ScreenToWorldPoint(_targetSizeRect.position);
-
-        float targetWidthPercent = (_targetSizeRect.rect.width - _minValueText.rectTransform.rect.width) / Screen.width;
-        float targetHeightPercent = (_targetSizeRect.rect.height - _stockValueText.rectTransform.rect.height) / Screen.height;
-
         float aspect = (float)Screen.width / (float)Screen.height;
         float worldHeight = Camera.main.orthographicSize * 2;
         float worldWidth = worldHeight * aspect;
 
-        float actualWidth = (worldWidth * targetWidthPercent);
-        float actualHeight = (worldHeight * targetHeightPercent);
+        if (_targetSizeRect != null)
+        {
+            _rectTransform.position = Camera.main.ScreenToWorldPoint(_targetSizeRect.position);
 
-        _rectTransform.sizeDelta = new Vector2(actualWidth, actualHeight);
+            float targetWidthPercent = (_targetSizeRect.rect.width - _minValueText.rectTransform.rect.width) / Screen.width;
+            float targetHeightPercent = (_targetSizeRect.rect.height - _stockValueText.rectTransform.rect.height) / Screen.height;
 
-        _targetSizeRect.gameObject.SetActive(false);
+
+            float actualWidth = (worldWidth * targetWidthPercent);
+            float actualHeight = (worldHeight * targetHeightPercent);
+
+            _rectTransform.sizeDelta = new Vector2(actualWidth, actualHeight);
+
+            _targetSizeRect.gameObject.SetActive(false);
+        }
+
+        float sideTextWidth = _midValueText.rectTransform.rect.width / Screen.width;
+        float sideTextHeight = _midValueText.rectTransform.rect.height / Screen.height;
+
+        float topTextWidth = _stockValueText.rectTransform.rect.width / Screen.width;
+        float topTextHeight = _stockValueText.rectTransform.rect.height / Screen.height;
+
+        Vector2 sideTextSize = new Vector2(sideTextWidth, sideTextHeight);
+        Vector2 topTextSize = new Vector2(topTextWidth, topTextHeight);
+
+        _minValueText.rectTransform.sizeDelta = sideTextSize;
+        _midValueText.rectTransform.sizeDelta = sideTextSize;
+        _maxValueText.rectTransform.sizeDelta = sideTextSize;
+
+        _stockValueText.rectTransform.sizeDelta = topTextSize;
 
         _rectZeroPosition = new Vector3(_rectTransform.position.x, _rectTransform.position.y, 0) - new Vector3(_rectTransform.rect.width / 2, _rectTransform.rect.height / 2, 0);
         _rectMaxPosition = new Vector3(_rectTransform.position.x, _rectTransform.position.y, 0) + new Vector3(_rectTransform.rect.width / 2, _rectTransform.rect.height /2, 0);
@@ -80,7 +99,7 @@ public class GraphScript : MonoBehaviour
 
         if (_minValueText != null)
         {
-            textPosition = Camera.main.WorldToScreenPoint(_rectZeroPosition);
+            textPosition = _rectZeroPosition;
             textPosition = new Vector3(textPosition.x - (_minValueText.rectTransform.rect.width / 2) - _sideTextSpacing, textPosition.y, textPosition.z);
             _minValueText.rectTransform.position = textPosition;
             _minValueText.text = "Minimum";
@@ -90,6 +109,7 @@ public class GraphScript : MonoBehaviour
             textPosition = new Vector3(_rectZeroPosition.x, _rectMaxPosition.y, 0);
             textPosition = Camera.main.WorldToScreenPoint(textPosition);
             textPosition = new Vector3(textPosition.x - (_maxValueText.rectTransform.rect.width / 2) - _sideTextSpacing, textPosition.y, textPosition.z);
+            textPosition = Camera.main.ScreenToWorldPoint(textPosition);
             _maxValueText.rectTransform.position = textPosition;
             _maxValueText.text = "Maximum";
         }
@@ -98,6 +118,7 @@ public class GraphScript : MonoBehaviour
             textPosition = new Vector3(_rectZeroPosition.x, (_rectMaxPosition.y + _rectZeroPosition.y) / 2, 0);
             textPosition = Camera.main.WorldToScreenPoint(textPosition);
             textPosition = new Vector3(textPosition.x - (_maxValueText.rectTransform.rect.width / 2) - _sideTextSpacing, textPosition.y, textPosition.z);
+            textPosition = Camera.main.ScreenToWorldPoint(textPosition);
             _midValueText.rectTransform.position = textPosition;
             _midValueText.text = "Midpoint";
         }
@@ -106,6 +127,7 @@ public class GraphScript : MonoBehaviour
             textPosition = new Vector3((_rectMaxPosition.x + _rectZeroPosition.x) / 2, _rectMaxPosition.y, 0);
             textPosition = Camera.main.WorldToScreenPoint(textPosition);
             textPosition = new Vector3(textPosition.x, textPosition.y + (_stockValueText.rectTransform.rect.height / 2) + _sideTextSpacing, textPosition.z);
+            textPosition = Camera.main.ScreenToWorldPoint(textPosition);
             _stockValueText.rectTransform.position = textPosition;
             _stockValueText.text = $"$0";
         }
@@ -172,10 +194,10 @@ public class GraphScript : MonoBehaviour
             graphPoints[p] = new Vector3(xPos, yPos, 0);
         }
 
-        _minValueText.text = $"${minValue}";
-        _midValueText.text = $"${minValue + ((maxValue - minValue) / 2)}";
-        _maxValueText.text = $"${maxValue}";
-        _stockValueText.text = $"{_stockToWatch.stockName} Value: ${points[points.Length - 1]}";
+        _minValueText.text = $"${FormatNumber(minValue)}";
+        _midValueText.text = $"${FormatNumber(minValue + ((maxValue - minValue) / 2))}";
+        _maxValueText.text = $"${FormatNumber(maxValue)}";
+        _stockValueText.text = $"{_stockToWatch.stockName} Value: ${FormatNumber(points[points.Length - 1])}";
 
         _lineRenderer.startColor = _stockToWatch.color;
         _lineRenderer.endColor = _stockToWatch.color;
@@ -184,4 +206,13 @@ public class GraphScript : MonoBehaviour
         _lineRenderer.SetPositions(graphPoints);
     }
 
+    private string FormatNumber(float input)
+    {
+        string[] substrings = input.ToString().Split(".");
+        if (substrings.Length == 1)
+        {
+            return substrings[0];
+        }
+        return substrings[0] + "." + substrings[1][0] + substrings[1][1];
+    }
 }
