@@ -82,4 +82,4 @@ MonoBehaviour:
   stockWeightDivisor: 2.5
   minStockWeight: 0.01
   maxStockWeight: 10
-  _stockStartDelay: 1
+  _stockStartDelay: 2.5
