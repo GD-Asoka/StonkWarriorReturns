@@ -13,11 +13,12 @@ public class TraderScript : MonoBehaviour
     public bool boughtOut { get; protected set; } = false;
     public bool isPlayer { get; protected set; } = false;
 
+    [SerializeField] private string _traderName = "Player";
     public string traderName { get; protected set; }
 
     protected virtual void Awake()
     {
-
+        traderName = _traderName;
     }
 
     protected virtual void Start()

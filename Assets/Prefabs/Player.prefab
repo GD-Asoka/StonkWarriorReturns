@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingMoney: 1000
   _holdMultiplyer: 1.25
+  _timeBetweenBuysSells: 0.05
 --- !u!114 &2000241213810327118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +121,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f471176c-0ed0-447b-81c9-9e58f917de43
     m_ActionName: 'Player/SwapStock[/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 637607453614370366}
+        m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
+        m_MethodName: InputSwapBuySell
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7ecff7d0-739c-459e-90f5-58568885dec6
+    m_ActionName: 'Player/SwapAction[/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 637607453614370366}
+        m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
+        m_MethodName: InputAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6c8f313b-acf0-43e8-b6e6-3716aea286b4
+    m_ActionName: 'Player/PerformAction[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

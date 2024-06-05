@@ -17,11 +17,18 @@ public class PlayerScript : TraderScript
 
     StocksScriptableObject stockToWatch;
 
+    public enum ActionSelected
+    {
+        BUYING,
+        SELLING
+    }
+
     public enum MarketState
     {
         NONE,
         BUYING,
-        SELLING
+        SELLING,
+        PREFORMACTION
     }
     /*
      * List<stock1>
@@ -29,6 +36,7 @@ public class PlayerScript : TraderScript
 
     public MarketState state { get; private set; } = MarketState.NONE;
     private MarketState _lastState = MarketState.NONE;
+    public ActionSelected actionSelected = ActionSelected.BUYING;
 
     public void InputBuy(InputAction.CallbackContext context)
     {
@@ -81,6 +89,36 @@ public class PlayerScript : TraderScript
         SwappedStock?.Invoke(_availableStocks[_stockSelected]);
     }
 
+    public void InputSwapBuySell(InputAction.CallbackContext context)
+    {
+        if (!context.started)
+        {
+            return;
+        }
+        int direction = (int)Mathf.Sign(context.ReadValue<float>());
+        if (direction > 0)
+        {
+            actionSelected = ActionSelected.SELLING;
+        }
+        else
+        {
+            actionSelected = ActionSelected.BUYING;
+        }
+        SwappedStock?.Invoke(_availableStocks[_stockSelected]);
+    }
+
+    public void InputAction(InputAction.CallbackContext context)
+    {
+        if (context.canceled)
+        {
+            Debug.Log("Stopped Action");
+            state = MarketState.NONE;
+            return;
+        }
+        Debug.Log("Action");
+        state = MarketState.PREFORMACTION;
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -113,13 +151,24 @@ public class PlayerScript : TraderScript
         {
             if (_buySellCooldown <= 0)
             {
-                if (state == MarketState.BUYING)
+                switch (state) 
                 {
-                    BuyStock(_availableStocks[_stockSelected], (int)_buySellMod);
-                }
-                else
-                {
-                    SellStock(_availableStocks[_stockSelected], (int)_buySellMod);
+                    case MarketState.BUYING:
+                        BuyStock(_availableStocks[_stockSelected], (int)_buySellMod);
+                        break;
+                    case MarketState.SELLING:
+                        SellStock(_availableStocks[_stockSelected], (int)_buySellMod);
+                        break;
+                    default:
+                        if (actionSelected == ActionSelected.BUYING)
+                        {
+                            BuyStock(_availableStocks[_stockSelected], (int)_buySellMod);
+                        }
+                        else if (actionSelected == ActionSelected.SELLING)
+                        {
+                            SellStock(_availableStocks[_stockSelected], (int)_buySellMod);
+                        }
+                        break;
                 }
                 _buySellMod = Mathf.Min(_holdMultiplyer * _buySellMod, 10000);
                 _buySellCooldown = _timeBetweenBuysSells;

@@ -430,7 +430,7 @@ public class GraphHandler : MonoBehaviour
             xMultSet = true;
         }        
 
-        print(value);
+        //print(value);
         //targetMoveOffset = new Vector2(xVal,yVal);
         //ChangeZoomPoint(value);
 
