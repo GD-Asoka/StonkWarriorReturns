@@ -135,6 +135,10 @@ public class GraphScript : MonoBehaviour
 
     public void ChangeStockWatched(StocksScriptableObject stock)
     {
+        if (stock == null)
+        {
+            return;
+        }
         _stockToWatch = stock;
     }
 

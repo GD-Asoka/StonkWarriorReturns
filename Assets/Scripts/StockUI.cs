@@ -40,7 +40,7 @@ public class StockUI : MonoBehaviour
     {
         _buyButtonImage.color = _buyInactiveColour;
         _sellButtonImage.color = _sellInactiveColour;
-        if (_stockToWatch != stock)
+        if (_stockToWatch != stock || stock == null)
         {
             _selectedImage.gameObject.SetActive(false);
             return;

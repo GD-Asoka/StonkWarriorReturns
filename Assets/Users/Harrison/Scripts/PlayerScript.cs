@@ -8,19 +8,23 @@ public class PlayerScript : TraderScript
 {
     public static PlayerScript INSTANCE;
     public static event UnityAction<StocksScriptableObject> SwappedStock;
+    public static event UnityAction<TraderScript> SwappedTrader;
     public static event UnityAction<StocksScriptableObject, int> PlayerStockAmountChange;
     [SerializeField] [Range(1f, 2f)] private float _holdMultiplyer = 1.25f;
     [SerializeField] private float _timeBetweenBuysSells = 0.05f;
     private float _buySellCooldown = 0;
     private float _buySellMod = 1;
     public int _stockSelected { get; private set; } = 0;
+    public int _enemySelected { get; private set; } = 0;
+    private List<TraderScript> _availableEnemies = new List<TraderScript>();
 
     StocksScriptableObject stockToWatch;
 
     public enum ActionSelected
     {
         BUYING,
-        SELLING
+        SELLING,
+        ENEMY
     }
 
     public enum MarketState
@@ -77,21 +81,53 @@ public class PlayerScript : TraderScript
             return;
         }
         int direction = (int)Mathf.Sign(context.ReadValue<float>());
-        _stockSelected += direction;
-        if (_stockSelected < 0)
+        if (actionSelected == ActionSelected.ENEMY)
         {
-            _stockSelected = _availableStocks.Count - 1;
+            _enemySelected += direction;
+            if (_enemySelected < 0)
+            {
+                _enemySelected = _availableEnemies.Count - 1;
+                actionSelected = ActionSelected.BUYING;
+            }
+            else if (_enemySelected >= _availableEnemies.Count)
+            {
+                _enemySelected = 0;
+                actionSelected = ActionSelected.BUYING;
+            }
         }
-        else if (_stockSelected >= _availableStocks.Count)
+        else
         {
-            _stockSelected = 0;
+            _stockSelected += direction;
+            if (_stockSelected < 0)
+            {
+                _stockSelected = _availableStocks.Count - 1;
+                actionSelected = ActionSelected.ENEMY;
+            }
+            else if (_stockSelected >= _availableStocks.Count)
+            {
+                _stockSelected = 0;
+                actionSelected = ActionSelected.ENEMY;
+            }
         }
-        SwappedStock?.Invoke(_availableStocks[_stockSelected]);
+        if (actionSelected == ActionSelected.ENEMY)
+        {
+            SwappedStock?.Invoke(null);
+            SwappedTrader?.Invoke(_availableEnemies[_enemySelected]);
+        }
+        else
+        {
+            SwappedStock?.Invoke(_availableStocks[_stockSelected]);
+            SwappedTrader?.Invoke(null);
+        }
     }
 
     public void InputSwapBuySell(InputAction.CallbackContext context)
     {
         if (!context.started)
+        {
+            return;
+        }
+        if (actionSelected == ActionSelected.ENEMY)
         {
             return;
         }
@@ -136,7 +172,16 @@ public class PlayerScript : TraderScript
         base.Start();
         _stockSelected = 0;
         SwappedStock?.Invoke(_availableStocks[_stockSelected]);
+        SwappedTrader?.Invoke(null);
         _buyoutMod = GameManager.INSTANCE.difficultySettings.playerBuyoutMod;
+        TraderScript[] traders = FindObjectsByType<TraderScript>(FindObjectsSortMode.None);
+        for (int t = 0; t < traders.Length; t++)
+        {
+            if (traders[t] != this)
+            {
+                _availableEnemies.Add(traders[t]);
+            }
+        }
     }
 
     protected override void Update()

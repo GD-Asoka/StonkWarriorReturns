@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class EnemyUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text _AINameText;
     [SerializeField] private TMP_Text _AIBuyoutValueText;
+    [SerializeField] private Image _selectedImage;
     [SerializeField] private TraderScript _trader;
     private void Start()
     {
@@ -17,6 +19,7 @@ public class EnemyUI : MonoBehaviour
                 _AINameText.text = _trader.traderName;
             }
         }
+        _selectedImage.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -28,6 +31,16 @@ public class EnemyUI : MonoBehaviour
                 _AIBuyoutValueText.text = $"Buyout Value: {_trader.buyoutValue}";
             }
         }
+    }
+
+    public void AISelected(TraderScript trader)
+    {
+        if (trader != _trader || trader == null)
+        {
+            _selectedImage.gameObject.SetActive(false);
+            return;
+        }
+        _selectedImage.gameObject.SetActive(true);
     }
 
     public void AttemptBuyout()
