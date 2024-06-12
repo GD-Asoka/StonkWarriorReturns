@@ -1143,20 +1143,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
+      propertyPath: currentBuy
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
       propertyPath: _buyPercent
-      value: 9.8
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
       propertyPath: _traderName
       value: Jeff Beezoz
       objectReference: {fileID: 0}
     - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
+      propertyPath: currentSell
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
       propertyPath: _startingMoney
-      value: 1000
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
       propertyPath: _sellPercentGain
-      value: 5.1
+      value: 13.8
       objectReference: {fileID: 0}
     - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
       propertyPath: _numberStocksToBuy
@@ -1717,11 +1725,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 596184748878170809, guid: 7e54fe60c75d6dc40ac83894c1917396, type: 3}
       propertyPath: m_margin.x
-      value: -34.176025
+      value: 19.091675
       objectReference: {fileID: 0}
     - target: {fileID: 596184748878170809, guid: 7e54fe60c75d6dc40ac83894c1917396, type: 3}
       propertyPath: m_margin.z
-      value: 45.560516
+      value: 1.9779663
       objectReference: {fileID: 0}
     - target: {fileID: 596184748878170809, guid: 7e54fe60c75d6dc40ac83894c1917396, type: 3}
       propertyPath: m_fontAsset
@@ -3368,12 +3376,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

@@ -126,14 +126,14 @@ public class TraderScript : MonoBehaviour
                 SoundManager.INSTANCE.PlaySFX(SoundManager.SFX.illegalAction);
             return false;
         }
-        if(target == PlayerScript.INSTANCE)
-        {
-            GameManager.INSTANCE.PlayerLost();
-        }
-        else
-        {
-            GameManager.INSTANCE.PlayerWon();
-        }
+        //if(target == PlayerScript.INSTANCE)
+        //{
+        //    GameManager.INSTANCE.PlayerLost();
+        //}
+        //else
+        //{
+        //    GameManager.INSTANCE.PlayerWon();
+        //}
         money -= target.buyoutValue;
         target.GetBoughtOut();
         return true;

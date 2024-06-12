@@ -50,6 +50,10 @@ public class BasicAIScript : TraderScript
     protected override void Update()
     {
         base.Update();
+        if (boughtOut)
+        {
+            return;
+        }
         AttemptBuyout(PlayerScript.INSTANCE);
     }
 
