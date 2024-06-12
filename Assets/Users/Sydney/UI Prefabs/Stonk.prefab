@@ -273,6 +273,13 @@ MonoBehaviour:
   _ownedStockAmountText: {fileID: 2606878356697543792}
   _stockToWatch: {fileID: 0}
   _selectedImage: {fileID: 3155035617566237152}
+  _selectedColour: {r: 1, g: 0.9479667, b: 0, a: 1}
+  _buyButtonImage: {fileID: 5072292966913281705}
+  _buyActiveColour: {r: 1, g: 1, b: 1, a: 1}
+  _buyInactiveColour: {r: 0.14150941, g: 0.12215199, b: 0.12215199, a: 0}
+  _sellButtonImage: {fileID: 6186190847524760861}
+  _sellActiveColour: {r: 1, g: 1, b: 1, a: 1}
+  _sellInactiveColour: {r: 0.18867922, g: 0.15752934, b: 0.15752934, a: 0}
 --- !u!222 &7941343822408407672
 CanvasRenderer:
   m_ObjectHideFlags: 0

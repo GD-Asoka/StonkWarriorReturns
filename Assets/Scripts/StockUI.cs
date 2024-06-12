@@ -38,6 +38,9 @@ public class StockUI : MonoBehaviour
 
     public void SelectionChange(StocksScriptableObject stock)
     {
+        if (!_buyButtonImage || _buyInactiveColour == null || !_sellButtonImage || _sellInactiveColour == null)
+            print(gameObject.name);
+
         _buyButtonImage.color = _buyInactiveColour;
         _sellButtonImage.color = _sellInactiveColour;
         if (_stockToWatch != stock)
