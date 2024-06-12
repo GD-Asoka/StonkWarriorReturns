@@ -133,5 +133,6 @@ public class TraderScript : MonoBehaviour
     public virtual void GetBoughtOut()
     {
         boughtOut = true;
+        print("GameOver");
     }
 }

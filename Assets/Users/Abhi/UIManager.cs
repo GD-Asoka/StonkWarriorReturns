@@ -52,10 +52,12 @@ public class UIManager : MonoBehaviour
         gameOver.SetActive(win);
         if (win)
         {
+            print("you win");
             winScreen.SetActive(true);
         }
         else
         {
+            print("you lose");
             loseScreen.SetActive(false);
         }
     }

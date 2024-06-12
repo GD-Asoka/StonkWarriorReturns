@@ -65,6 +65,5 @@ public class GameManager : MonoBehaviour
     {
         UIManager.instance.GameOver(false);
         StockPriceManager.INSTANCE.EndGame();
-    }
-
+    }    
 }
