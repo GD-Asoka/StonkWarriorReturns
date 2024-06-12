@@ -25,7 +25,7 @@ public class StockPriceManager : MonoBehaviour
     [SerializeField] [Range(0.001f, 2.5f)] private float minStockWeight = 0.01f;
     [SerializeField] [Range(2.5f, 35f)] private float maxStockWeight = 10f;
     [SerializeField] private float _stockStartDelay = 1f;
-    [SerializeField] private float _priceVolitility = 4f;
+    [SerializeField] private float _priceVolatility = 4f;
     public bool gameRunning { get; private set; } = true;
     public static event UnityAction<Dictionary<StocksScriptableObject, StockValues>> UpdatePrices;
     public static event UnityAction<NewsHeadlineScriptableObject> NewsCall;
@@ -74,7 +74,7 @@ public class StockPriceManager : MonoBehaviour
             List<StocksScriptableObject> stocks = new List<StocksScriptableObject>(stockData.Keys);
             foreach (StocksScriptableObject stock in stocks)
             {
-                float trend = Random.Range(stock.minMaxDefaultTrend.x, stock.minMaxDefaultTrend.y) * _priceVolitility;
+                float trend = Random.Range(stock.minMaxDefaultTrend.x, stock.minMaxDefaultTrend.y) * _priceVolatility;
                 float trendMod = CalculateStockTrendChange(stock);
                 float stockPrice = CalculateStockPrice(stock, trend, trendMod);
                 stockData[stock] = ChangeStockValue(stock, stockPrice, trend, trendMod, -1, stockData[stock].numberInCirculation);
