@@ -109,6 +109,7 @@ public class BasicAIScript : TraderScript
             _sellPercentGain = currentSell;
         }
     }
+
     public override void GetBoughtOut()
     {
         base.GetBoughtOut();

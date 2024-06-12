@@ -7,6 +7,7 @@ using AYellowpaper.SerializedCollections;
 
 public class SoundManager : MonoBehaviour
 {
+    public float waitTime = 0.5f;
     public static SoundManager INSTANCE;
     private AudioSource _audioSource;
     public enum MusicContexts
@@ -15,6 +16,7 @@ public class SoundManager : MonoBehaviour
         GameLost,
         GameWon,
         Gameplay,
+        News,
     }
 
     public enum GameState
@@ -31,9 +33,12 @@ public class SoundManager : MonoBehaviour
         buying,
         selling,
         switching,
-        buttonClick,
+        illegalAction,
+        buttonClickYes,
+        buttonClickNo,
+        news,
     }
-    public AudioClip buying, selling, switching, buttonClick;
+    public AudioClip buying, selling, switching, cantBuy, news, firstNews;
 
     [SerializeField] private SerializedDictionary<MusicContexts, AudioClip> _musicDictionary = new SerializedDictionary<MusicContexts, AudioClip>();
     private void Awake()
@@ -43,30 +48,51 @@ public class SoundManager : MonoBehaviour
         //    Destroy(gameObject);
         //    return;
         //}
-        //INSTANCE = this;
+        INSTANCE = this;
         _audioSource = GetComponent<AudioSource>();
         //DontDestroyOnLoad(gameObject);
     }
-    public void PlaySound(AudioClip clip)
+
+    private bool canPlay = true;
+
+    //private void Update()
+    //{
+    //    if(Input.GetKey(KeyCode.Backspace) && canPlay)
+    //    {
+    //        StartCoroutine(PlaySound(selling));
+    //    }
+    //}
+
+    private IEnumerator PlaySound(AudioClip clip)
     {
+        canPlay = false;
         _audioSource.PlayOneShot(clip);
+        yield return new WaitForSeconds(clip.length * waitTime);
+        canPlay = true;
     }
 
     public void PlaySFX(SFX sfx)
     {
+        if (!canPlay) return;
         switch(sfx)
         {
             case SFX.buying:
-                PlaySound(buying);
+                StartCoroutine(PlaySound(buying));
                 break;
             case SFX.selling:
-                PlaySound(selling);
+                StartCoroutine(PlaySound(selling));
                 break;
             case SFX.switching:
-                PlaySound(switching);
+                StartCoroutine(PlaySound(switching));
                 break;
-            case SFX.buttonClick:
-                PlaySound(buttonClick);
+            case SFX.illegalAction:
+                StartCoroutine(PlaySound(cantBuy));
+                break;
+            case SFX.buttonClickYes:
+                StartCoroutine(PlaySound(buying));
+                break;
+            case SFX.buttonClickNo:
+                StartCoroutine(PlaySound(selling));
                 break;
         }
     }
@@ -74,6 +100,26 @@ public class SoundManager : MonoBehaviour
     public void PlayMusic(MusicContexts context)
     {
         _audioSource.resource = _musicDictionary[context];
+        _audioSource.Play();
+    }
+
+    public void PlayFirstNews()
+    {
+        StartCoroutine(FirstNews());
+    }
+    
+    public void PlayNews()
+    {
+        _audioSource.PlayOneShot(news);
+    }
+
+    private IEnumerator FirstNews()
+    {
+        var temp = _audioSource.resource;
+        _audioSource.resource = firstNews;
+        _audioSource.Play();
+        yield return new WaitForSeconds(firstNews.length);
+        _audioSource.resource = temp;
         _audioSource.Play();
     }
 
@@ -90,7 +136,6 @@ public class SoundManager : MonoBehaviour
             case GameState.Lost:
                 PlayMusic(MusicContexts.GameLost);
                 break;
-
         }
     }
 

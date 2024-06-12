@@ -134,8 +134,18 @@ public class StockPriceManager : MonoBehaviour
         return newPrice;
     }
 
+    bool firstNews = true;
     private IEnumerator ApplyNewsEffect(NewsHeadlineScriptableObject headline)
     {
+        if (firstNews)
+        {
+            SoundManager.INSTANCE.PlayFirstNews();
+            firstNews = false;
+        }
+        else
+        {
+            SoundManager.INSTANCE.PlayNews();
+        }
         yield return new WaitForSeconds(_stockStartDelay);
         activeNewsHeadlines.Add(headline);
         yield return new WaitForSeconds(Random.Range(headline.minEffectTime, headline.maxEffectTime));

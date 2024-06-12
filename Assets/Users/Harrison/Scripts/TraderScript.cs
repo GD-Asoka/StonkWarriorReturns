@@ -124,7 +124,14 @@ public class TraderScript : MonoBehaviour
         {
             return false;
         }
-
+        if(target == PlayerScript.INSTANCE)
+        {
+            GameManager.INSTANCE.PlayerLost();
+        }
+        else
+        {
+            GameManager.INSTANCE.PlayerWon();
+        }
         money -= target.buyoutValue;
         target.GetBoughtOut();
         return true;

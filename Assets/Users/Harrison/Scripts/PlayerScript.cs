@@ -43,6 +43,7 @@ public class PlayerScript : TraderScript
 
     public void InputBuy(InputAction.CallbackContext context)
     {
+        SoundManager.INSTANCE.PlaySFX(SoundManager.SFX.buying);
         if (context.started)
         {
             state = MarketState.BUYING;
@@ -63,6 +64,7 @@ public class PlayerScript : TraderScript
         {
             state = MarketState.SELLING;
             _buySellCooldown = 0;
+            print("playing sound");
         }
         if (context.canceled)
         {
@@ -75,6 +77,7 @@ public class PlayerScript : TraderScript
 
     public void InputSwapStock(InputAction.CallbackContext context)
     {
+        SoundManager.INSTANCE.PlaySFX(SoundManager.SFX.switching);
         if (!context.started)
         {
             return;
@@ -102,6 +105,7 @@ public class PlayerScript : TraderScript
 
     public void InputSwapBuySell(InputAction.CallbackContext context)
     {
+        SoundManager.INSTANCE.PlaySFX(SoundManager.SFX.switching);
         if (!context.started)
         {
             return;
@@ -230,6 +234,7 @@ public class PlayerScript : TraderScript
             PlayerStockAmountChange?.Invoke(stock, 0);
             return;
         }
+        SoundManager.INSTANCE.PlaySFX(SoundManager.SFX.buying);
         PlayerStockAmountChange?.Invoke(stock, _stocksOwned[stock]);
     }
 
@@ -241,6 +246,7 @@ public class PlayerScript : TraderScript
             PlayerStockAmountChange?.Invoke(stock, 0);
             return;
         }
+        SoundManager.INSTANCE.PlaySFX(SoundManager.SFX.selling);
         PlayerStockAmountChange?.Invoke(stock, _stocksOwned[stock]);
     }
 }

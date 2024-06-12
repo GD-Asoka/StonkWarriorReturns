@@ -66,4 +66,9 @@ public class GameManager : MonoBehaviour
         UIManager.instance.GameOver(false);
         StockPriceManager.INSTANCE.EndGame();
     }    
+
+    public void CloseUI(GameObject UI)
+    {
+        UI.SetActive(false);
+    }
 }

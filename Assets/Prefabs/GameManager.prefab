@@ -157,10 +157,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5bcfdf172c1f3b4fb926495c0b905b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buying: {fileID: 0}
-  selling: {fileID: 0}
-  switching: {fileID: 0}
-  buttonClick: {fileID: 0}
+  waitTime: 0.5
+  buying: {fileID: 8300000, guid: 4dc4dbf5152c2cd4e897b2c8fe1dc9c3, type: 3}
+  selling: {fileID: 8300000, guid: 0dec9e4d65d086242a41766d2357b7d5, type: 3}
+  switching: {fileID: 8300000, guid: a28c07618ff3dca4889880d06e84af34, type: 3}
+  cantBuy: {fileID: 8300000, guid: a777721bbb8ec61479df3a47b99842bf, type: 3}
+  news: {fileID: 8300000, guid: 543e2be0b9374f643a5dbac2a6a13060, type: 3}
+  firstNews: {fileID: 8300000, guid: ea2f40f97d9e93e4e949cc6aae6a04c2, type: 3}
   _musicDictionary:
     _serializedList: []
 --- !u!114 &8197345579337261559

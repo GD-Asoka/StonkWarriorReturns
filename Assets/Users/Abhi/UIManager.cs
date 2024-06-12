@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
 
     public void GameOver(bool win)
     {
-        gameOver.SetActive(win);
+        gameOver.SetActive(true);
         if (win)
         {
             print("you win");
@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour
         else
         {
             print("you lose");
-            loseScreen.SetActive(false);
+            loseScreen.SetActive(true);
         }
     }
 
