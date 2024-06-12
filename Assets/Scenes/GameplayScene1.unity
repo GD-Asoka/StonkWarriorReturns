@@ -1292,24 +1292,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
-      propertyPath: _buyPercent
-      value: 9.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
       propertyPath: _traderName
       value: Jeff Beezoz
       objectReference: {fileID: 0}
     - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
       propertyPath: _startingMoney
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
-      propertyPath: _sellPercentGain
-      value: 5.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
-      propertyPath: _numberStocksToBuy
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
       propertyPath: _stocksToWatch.Array.size
