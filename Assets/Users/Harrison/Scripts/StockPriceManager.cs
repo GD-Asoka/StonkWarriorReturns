@@ -75,6 +75,10 @@ public class StockPriceManager : MonoBehaviour
             foreach (StocksScriptableObject stock in stocks)
             {
                 float trend = Random.Range(stock.minMaxDefaultTrend.x, stock.minMaxDefaultTrend.y) * _priceVolatility;
+                if (GameManager.INSTANCE.chaosMode)
+                {
+                    trend *= _priceVolatility;
+                }
                 float trendMod = CalculateStockTrendChange(stock);
                 float stockPrice = CalculateStockPrice(stock, trend, trendMod);
                 stockData[stock] = ChangeStockValue(stock, stockPrice, trend, trendMod, -1, stockData[stock].numberInCirculation);
