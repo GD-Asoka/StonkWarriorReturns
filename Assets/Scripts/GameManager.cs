@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerWon()
     {
+        UIManager.instance.GameOver(true);
         StockPriceManager.INSTANCE.EndGame();
         for (int t = 0; t < enemyTraders.Count; t++)
         {
@@ -62,8 +63,8 @@ public class GameManager : MonoBehaviour
     
     public void PlayerLost()
     {
+        UIManager.instance.GameOver(false);
         StockPriceManager.INSTANCE.EndGame();
-
     }
 
 }

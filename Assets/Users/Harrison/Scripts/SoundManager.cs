@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AYellowpaper.SerializedCollections;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 [RequireComponent(typeof(AudioSource))]
 
@@ -39,14 +38,14 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SerializedDictionary<MusicContexts, AudioClip> _musicDictionary = new SerializedDictionary<MusicContexts, AudioClip>();
     private void Awake()
     {
-        if (INSTANCE != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        INSTANCE = this;
+        //if (INSTANCE != null)
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}
+        //INSTANCE = this;
         _audioSource = GetComponent<AudioSource>();
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     public void PlaySound(AudioClip clip)
     {
@@ -93,5 +92,13 @@ public class SoundManager : MonoBehaviour
                 break;
 
         }
+    }
+
+    public void ToggleAudio()
+    {
+        if(_audioSource.volume <= 0)   
+            _audioSource.volume = 1;
+        else if(_audioSource.volume >= 1)
+            _audioSource.volume = 0;
     }
 }

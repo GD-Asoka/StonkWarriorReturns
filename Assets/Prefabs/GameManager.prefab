@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5600115562030528322}
   - component: {fileID: 214539946234226906}
   - component: {fileID: 4095932740397400792}
+  - component: {fileID: 8197345579337261559}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -57,12 +58,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9d40921162ec23549a755f31e5914ff1, type: 3}
+  m_Resource: {fileID: 8300000, guid: 9d40921162ec23549a755f31e5914ff1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -156,5 +157,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5bcfdf172c1f3b4fb926495c0b905b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buying: {fileID: 0}
+  selling: {fileID: 0}
+  switching: {fileID: 0}
+  buttonClick: {fileID: 0}
   _musicDictionary:
     _serializedList: []
+--- !u!114 &8197345579337261559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8917736232761624373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3555d35f74e8aa49b14acd876ca9af2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionsMenu: {fileID: 0}
+  credits: {fileID: 0}
+  gameOver: {fileID: 0}
+  winScreen: {fileID: 0}
+  loseScreen: {fileID: 0}
