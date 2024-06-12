@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PlayerScript : TraderScript
 {
+    public ScrollRect scrollRect; 
+    public float scrollSpeed = 0.1f;
     public static PlayerScript INSTANCE;
     public static event UnityAction<StocksScriptableObject> SwappedStock;
     public static event UnityAction<StocksScriptableObject, int> PlayerStockAmountChange;
@@ -87,6 +90,14 @@ public class PlayerScript : TraderScript
             _stockSelected = 0;
         }
         SwappedStock?.Invoke(_availableStocks[_stockSelected]);
+
+        float verticalInput = -Mathf.Clamp(context.ReadValue<float>(), -1, 1);
+        if (verticalInput != 0)
+        {
+            float newVerticalPosition = scrollRect.verticalNormalizedPosition + verticalInput * scrollSpeed * Time.deltaTime;
+            newVerticalPosition = Mathf.Clamp(newVerticalPosition, 0f, 1f); // Ensure the value stays within the bounds of 0 and 1
+            scrollRect.verticalNormalizedPosition = newVerticalPosition;
+        }
     }
 
     public void InputSwapBuySell(InputAction.CallbackContext context)

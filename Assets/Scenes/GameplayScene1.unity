@@ -736,6 +736,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd1c8b0bc6e44ba49a3a26e760a92658, type: 3}
+--- !u!114 &312016000 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8722207891126530548, guid: 7e54fe60c75d6dc40ac83894c1917396, type: 3}
+  m_PrefabInstance: {fileID: 2085790414}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &329698223
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,6 +830,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 637607453614370366, guid: 55dedb49ac96f3a479e76464bbf4450d, type: 3}
+      propertyPath: scrollRect
+      value: 
+      objectReference: {fileID: 312016000}
+    - target: {fileID: 637607453614370366, guid: 55dedb49ac96f3a479e76464bbf4450d, type: 3}
+      propertyPath: scrollSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2070156410433016023, guid: 55dedb49ac96f3a479e76464bbf4450d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1122.3082
@@ -1301,7 +1320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
       propertyPath: _startingMoney
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5658336557213877110, guid: 68254f60f38eac946a57d65d19f41ee9, type: 3}
       propertyPath: _sellPercentGain
@@ -2412,6 +2431,18 @@ PrefabInstance:
     - target: {fileID: 8722207891126530548, guid: 7e54fe60c75d6dc40ac83894c1917396, type: 3}
       propertyPath: m_MovementType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722207891126530548, guid: 7e54fe60c75d6dc40ac83894c1917396, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722207891126530548, guid: 7e54fe60c75d6dc40ac83894c1917396, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722207891126530548, guid: 7e54fe60c75d6dc40ac83894c1917396, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8892852107831093884, guid: 7e54fe60c75d6dc40ac83894c1917396, type: 3}
       propertyPath: m_AnchorMax.y
