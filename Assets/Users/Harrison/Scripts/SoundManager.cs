@@ -38,7 +38,7 @@ public class SoundManager : MonoBehaviour
         buttonClickNo,
         news,
     }
-    public AudioClip buying, selling, switching, cantBuy, news, firstNews;
+    public AudioClip buying, selling, switching, cantBuy, news, firstNews, gameOver;
 
     [SerializeField] private SerializedDictionary<MusicContexts, AudioClip> _musicDictionary = new SerializedDictionary<MusicContexts, AudioClip>();
     private void Awake()
@@ -111,6 +111,12 @@ public class SoundManager : MonoBehaviour
     public void PlayNews()
     {
         _audioSource.PlayOneShot(news);
+    }
+    
+    public void GameOver()
+    {
+        _audioSource.resource = gameOver;
+        _audioSource.Play();
     }
 
     private IEnumerator FirstNews()

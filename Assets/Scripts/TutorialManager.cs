@@ -10,6 +10,10 @@ public class TutorialManager : MonoBehaviour
 
     public void NextTutorial()
     {
+        if(currentTutorial == tutorials.Count - 1)
+        {
+            SceneManager.LoadScene(1);
+        }
         tutorials[currentTutorial].SetActive(false);
         currentTutorial++;
         tutorials[currentTutorial].SetActive(true);

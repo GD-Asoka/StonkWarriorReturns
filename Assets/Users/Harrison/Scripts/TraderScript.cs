@@ -122,6 +122,8 @@ public class TraderScript : MonoBehaviour
     {
         if (money < target.buyoutValue)
         {
+            if(target != PlayerScript.INSTANCE)
+                SoundManager.INSTANCE.PlaySFX(SoundManager.SFX.illegalAction);
             return false;
         }
         if(target == PlayerScript.INSTANCE)

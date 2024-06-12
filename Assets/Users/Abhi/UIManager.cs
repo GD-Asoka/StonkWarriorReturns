@@ -40,15 +40,14 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ToggleOptionsMenu();
-            if(credits)
-                if(credits.activeInHierarchy)
-                    ToggleCredits();
+            if(!credits)
+                ToggleOptionsMenu();
         }
     }
 
     public void GameOver(bool win)
     {
+        SoundManager.INSTANCE.GameOver();
         gameOver.SetActive(true);
         if (win)
         {
