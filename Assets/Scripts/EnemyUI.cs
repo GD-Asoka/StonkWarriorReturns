@@ -20,6 +20,12 @@ public class EnemyUI : MonoBehaviour
             }
         }
         _selectedImage.gameObject.SetActive(false);
+        PlayerScript.SwappedTrader += AISelected;
+    }
+
+    private void OnDisable()
+    {
+        PlayerScript.SwappedTrader -= AISelected;
     }
 
     private void Update()
